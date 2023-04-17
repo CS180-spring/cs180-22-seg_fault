@@ -6,42 +6,17 @@
 class Document {
     public:
 
-        void SetName(std::string temp) {
-            name = temp;
-        }
-        std::string RetName() {
-            return name;
-        }
+        void SetName(std::string temp);
+        std::string RetName();
 
-        void SetLoc(std::string temp) {
-            location = temp;
-        }
-        std::string RetLoc() {
-            return location;
-        }
+        void SetLoc(std::string temp);
+        std::string RetLoc();
 
-        void SetType(std::string temp) {
-            type = temp;
-        }
-        std::string RetType() {
-            return type;
-        }
+        void SetType(std::string temp);
+        std::string RetType();
 
-        void AddTag(std::string tag) {
-            tags.push_back(tag);
-        }
-
-        void DelTag(std::string tag) {
-            if (!tags.size()) {
-                return;
-            }
-
-            for (int i = 0; i < tags.size(); i++) {
-                if (tags[i] == tag) {
-                    tags.erase(tags.begin()+i);
-                }
-            }
-        }
+        void AddTag(std::string tag);
+        void DelTag(std::string tag);
 
         std::vector <std::string> tags;
 
