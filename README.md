@@ -11,3 +11,4 @@
 - If time permits, we hope to implement a frontend GUI for our project interface. 
     * Rather than inputting number values in a terminal, the user is presented with a webpage that has the same menu options.
     * The user should be able to click buttons that accomplish the same tasks as the terminal version described above.
+    * When the user is prompted to input values such as for renaming, an input field is shown for the user to input into.
