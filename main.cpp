@@ -1,29 +1,89 @@
 #include <iostream>
+#include "collection.cpp"
 #include "document.cpp"
 
-bool searchDocumentByName(std::string, std::vector<Document>);
+bool searchForCollection(std::string);
+Collection returnCollection(std::string);
+bool searchCollectionForDocumentByName(std::string, Collection);
+
+std::vector<Collection> tempCollectionVector; // temporary for testing
+Collection tempCollection; // temporary for testing
 
 int main()
 {
-	std::string input = "";
-	std::cout << "Input document name: ";
-	getline(std::cin, input);
-	std::vector<Document> storedDocuments;
-	if (searchDocumentByName(input, storedDocuments))
+	// adding 2 documents into tempCollection, then pushing the collection to tempCollectionVector
+	tempCollection.SetName("COLLECTION");
+	Document tempDoc1;
+	tempDoc1.SetName("firstDoc");
+	tempDoc1.SetLoc("main");
+	tempDoc1.SetType("txt");
+	tempCollection.AddDoc(&tempDoc1);
+	Document tempDoc2;
+	tempDoc2.SetName("secondDocument");
+	tempDoc2.SetLoc("folder");
+	tempDoc2.SetType("type");
+	tempCollection.AddDoc(&tempDoc2);
+	tempCollectionVector.push_back(tempCollection);
+	 // temporary for testing
+
+	std::string collectionName = "";
+	std::cout << "Input collection name: ";
+	getline(std::cin, collectionName);
+	if (searchForCollection(collectionName))
 	{
-		std::cout << "document name found in storedDocuments vector\n";
+		Collection foundCollection = returnCollection(collectionName);
+		std::cout << foundCollection.RetName() << " collection found.\n";
+		std::string documentName = "";
+		std::cout << "\nInput document name: ";
+		getline(std::cin, documentName);
+		if (searchCollectionForDocumentByName(documentName, foundCollection))
+		{
+			std::cout << documentName << " document was found in the " << foundCollection.RetName() << " collection.\n";
+		}
+		else
+		{
+			std::cout << documentName << " document was NOT found in the " << foundCollection.RetName() << " collection.\n";
+		}
 	}
 	else
 	{
-		std::cout << "document name NOT found in storedDocuments vector\n";
+		std::cout << collectionName << " collection was NOT found.\n";
 	}
+	return 0;
 }
 
-bool searchDocumentByName(std::string input, std::vector<Document> storedDocuments)
+bool searchForCollection(std::string collectionName)
 {
-	for (int cnt = 0; cnt < storedDocuments.size(); cnt++)
+	for (int cnt = 0; cnt < tempCollectionVector.size(); cnt++)
 	{
-		if (storedDocuments[cnt].RetName() == input)
+		if (tempCollectionVector[cnt].RetName() == collectionName)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+Collection returnCollection(std::string collectionName)
+{
+	Collection collectionToReturn;
+	for (int cnt = 0; cnt < tempCollectionVector.size(); cnt++)
+	{
+		if (tempCollectionVector[cnt].RetName() == collectionName)
+		{
+			collectionToReturn = tempCollectionVector[cnt];
+			break;
+		}
+	}
+	return collectionToReturn;
+}
+
+bool searchCollectionForDocumentByName(std::string documentName, Collection documentCollection)
+{
+	std::vector<Document*> documentCollectionVector = documentCollection.returnDocuments();
+	for (int cnt = 0; cnt < documentCollectionVector.size(); cnt++)
+	{
+		if (documentCollectionVector[cnt]->RetName() == documentName)
 		{
 			return true;
 		}
