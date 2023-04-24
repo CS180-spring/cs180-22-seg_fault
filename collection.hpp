@@ -12,6 +12,9 @@ class Collection {
 
         void AddTag(std::string);
         void DelTag(std::string);
+
+        std::vector<Document*> returnDocuments();
+        std::vector<std::string> returnTags();
         
     private:
         std::vector <Document*> documents;

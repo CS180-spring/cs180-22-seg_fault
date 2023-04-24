@@ -16,3 +16,13 @@ void Collection::AddTag(std::string temp) {
     tags.push_back(temp);
 }
 
+std::vector<Document*> Collection::returnDocuments()
+{
+    return documents;
+}
+
+std::vector<std::string> Collection::returnTags()
+{
+    return tags;
+}
+
