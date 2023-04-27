@@ -11,6 +11,7 @@ class Database
         void removeCollection(std::string);
         bool searchForCollection(std::string);
         Collection* returnCollection(std::string);
+        void printCollections();
     private:
         std::vector<Collection*> collectionVector;
 };

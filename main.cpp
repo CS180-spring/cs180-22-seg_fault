@@ -9,8 +9,16 @@ int main()
 {
 	// adding 2 documents into tempCollection, then push tempCollection to database collectionVector
 	Database test;
+	
 	Collection tempCollection;
+	std::string tempTag = "work";
+	tempCollection.AddTag(tempTag);
+	tempTag = "school";
+	tempCollection.AddTag(tempTag);
+	// std::string tempTag2 = "school";
+	// tempCollection.AddTag(tempTag2);
 	tempCollection.SetName("COLLECTION");
+
 	Document tempDoc1;
 	tempDoc1.SetName("firstDoc");
 	tempDoc1.SetLoc("main");
@@ -29,6 +37,7 @@ int main()
 	getline(std::cin, collectionName);
 	if (test.searchForCollection(collectionName))
 	{
+		test.printCollections();
 		Collection* foundCollection = test.returnCollection(collectionName);
 		std::cout << foundCollection->RetName() << " collection found.\n";
 		std::string documentName = "";

@@ -1,3 +1,4 @@
+#include <iostream>
 #include "database.hpp"
 
 void Database::addCollection(Collection* newCollection)
@@ -42,4 +43,26 @@ Collection* Database::returnCollection(std::string collectionName)
 		}
 	}
 	return collectionToReturn;
+}
+
+void Database::printCollections()
+{
+    std::cout << "\nPrinting collections in the database.\n";
+    for (int i = 0; i < collectionVector.size(); i++)
+    {
+        std::string tags = "{Tags: ";
+        std::vector<std::string> collectionTags = collectionVector[i]->returnTags();
+        for (int j = 0; j < collectionTags.size(); j++)
+        {
+            if (j + 1 == collectionTags.size())
+            {
+                tags += collectionTags[j] + "}\n";
+            }
+            else
+            {
+                tags += collectionTags[j] + ", ";
+            }
+        }
+        std::cout << "Collection " << i + 1 << ": {Name: " << collectionVector[i]->RetName() << "}, " + tags;
+    }
 }
