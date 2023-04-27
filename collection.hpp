@@ -15,6 +15,8 @@ class Collection {
 
         std::vector<Document*> returnDocuments();
         std::vector<std::string> returnTags();
+
+        bool searchForDocumentByName(std::string);
         
     private:
         std::vector <Document*> documents;

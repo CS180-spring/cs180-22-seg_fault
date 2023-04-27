@@ -26,3 +26,15 @@ std::vector<std::string> Collection::returnTags()
     return tags;
 }
 
+bool Collection::searchForDocumentByName(std::string documentName)
+{
+	for (int cnt = 0; cnt < documents.size(); cnt++)
+	{
+		if (documents[cnt]->RetName() == documentName)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
