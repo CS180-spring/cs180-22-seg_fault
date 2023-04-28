@@ -26,3 +26,22 @@ std::vector<std::string> Collection::returnTags()
     return tags;
 }
 
+std::vector<Document*> Collection::findTaggedDocuments(std::string tag)
+{
+    std::vector<Document*> taggedDocs;
+    taggedDocs = this->returnDocuments();
+    Document* curr;
+    std::vector<Document*> ans;
+    for (int i = 0; i < taggedDocs.size(); ++i)
+    {
+        curr = taggedDocs.at(i);
+        for (int j = 0; j < curr->tags.size(); ++j)
+        {
+            if (curr->tags[j] == tag)
+            {
+                ans.push_back(curr);
+            }
+        }
+    }
+    return ans;
+}
