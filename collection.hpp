@@ -1,25 +1,28 @@
 #ifndef _COLLECTION_HPP_
 #define _COLLECTION_HPP_
 #include "document.hpp"
+using namespace std;
 class Collection {
-
     public:
         void SetName(std::string name);
         std::string RetName();
 
         void AddDoc(Document* temp);
-        void DelDoc(std::string name);
+        void DelDoc(string name);
 
-        void AddTag(std::string);
-        void DelTag(std::string);
+        void AddTag(string);
+        void DelTag(string);
 
-        std::vector<Document*> returnDocuments();
-        std::vector<std::string> returnTags();
-        
+        vector<Document*> returnDocuments();
+        vector<std::string> returnTags();
+
+        int collectionSize();
+        void displayContents();
     private:
-        std::vector <Document*> documents;
-        std::vector <std::string> tags;
-        std::string name;
+        vector <Document*> documents;
+        vector <string> tags;
+        int collection_size;
+        string name;
 
 
 };

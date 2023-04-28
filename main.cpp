@@ -1,17 +1,19 @@
 #include <iostream>
 #include "collection.cpp"
 #include "document.cpp"
+using namespace std;
 
 bool searchForCollection(std::string);
 Collection returnCollection(std::string);
 bool searchCollectionForDocumentByName(std::string, Collection);
 
-std::vector<Collection> tempCollectionVector; // temporary for testing
+vector<Collection> tempCollectionVector; // temporary for testing
 Collection tempCollection; // temporary for testing
 
 int main()
 {
 	// adding 2 documents into tempCollection, then pushing the collection to tempCollectionVector
+
 	tempCollection.SetName("COLLECTION");
 	Document tempDoc1;
 	tempDoc1.SetName("firstDoc");
@@ -24,30 +26,31 @@ int main()
 	tempDoc2.SetType("type");
 	tempCollection.AddDoc(&tempDoc2);
 	tempCollectionVector.push_back(tempCollection);
+    tempCollection.displayContents(); //displays content of collection
 	 // temporary for testing
 
-	std::string collectionName = "";
-	std::cout << "Input collection name: ";
-	getline(std::cin, collectionName);
+	string collectionName = "";
+	cout << "Input collection name: ";
+	getline(cin, collectionName);
 	if (searchForCollection(collectionName))
 	{
 		Collection foundCollection = returnCollection(collectionName);
-		std::cout << foundCollection.RetName() << " collection found.\n";
-		std::string documentName = "";
-		std::cout << "\nInput document name: ";
+		cout << foundCollection.RetName() << " collection found.\n";
+		string documentName = "";
+		cout << "\nInput document name: ";
 		getline(std::cin, documentName);
 		if (searchCollectionForDocumentByName(documentName, foundCollection))
 		{
-			std::cout << documentName << " document was found in the " << foundCollection.RetName() << " collection.\n";
+			cout << documentName << " document was found in the " << foundCollection.RetName() << " collection.\n";
 		}
 		else
 		{
-			std::cout << documentName << " document was NOT found in the " << foundCollection.RetName() << " collection.\n";
+			cout << documentName << " document was NOT found in the " << foundCollection.RetName() << " collection.\n";
 		}
 	}
 	else
 	{
-		std::cout << collectionName << " collection was NOT found.\n";
+		cout << collectionName << " collection was NOT found.\n";
 	}
 	return 0;
 }
