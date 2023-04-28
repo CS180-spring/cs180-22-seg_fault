@@ -1,31 +1,31 @@
 #include "document.hpp"
 
-void Document::SetName(std::string temp) {
+void Document::SetName(string temp) {
     name = temp;
 }
-std::string Document::RetName() {
+string Document::RetName() {
     return name;
 }
 
-void Document::SetLoc(std::string temp) {
+void Document::SetLoc(string temp) {
     location = temp;
 }
-std::string Document::RetLoc() {
+string Document::RetLoc() {
     return location;
 }
 
-void Document::SetType(std::string temp) {
+void Document::SetType(string temp) {
     type = temp;
 }
-std::string Document::RetType() {
+string Document::RetType() {
     return type;
 }
 
-void Document::AddTag(std::string tag) {
+void Document::AddTag(string tag) {
     tags.push_back(tag);
 }
 
-void Document::DelTag(std::string tag) {
+void Document::DelTag(string tag) {
     if (!tags.size()) {
         return;
     }
