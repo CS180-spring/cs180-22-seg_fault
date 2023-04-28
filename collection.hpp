@@ -17,8 +17,6 @@ class Collection {
         vector<std::string> returnTags();
 
 
-        std::vector<Document*> returnDocuments();
-        std::vector<std::string> returnTags();
         std::vector<Document*> findTaggedDocuments(std::string tag);
 
 

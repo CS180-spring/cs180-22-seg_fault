@@ -26,7 +26,6 @@ int main()
 	tempDoc2.SetType("type");
 	tempCollection.AddDoc(&tempDoc2);
 	tempCollectionVector.push_back(tempCollection);
-    tempCollection.displayContents(); //displays content of collection
 	 // temporary for testing
 
 	string collectionName = "";
@@ -36,6 +35,8 @@ int main()
 	{
 		Collection foundCollection = returnCollection(collectionName);
 		cout << foundCollection.RetName() << " collection found.\n";
+        cout << "Contents in Collection: \n";
+        tempCollection.displayContents(); //displays content of collection
 		string documentName = "";
 		cout << "\nInput document name: ";
 		getline(std::cin, documentName);
