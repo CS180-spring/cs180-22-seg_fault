@@ -26,7 +26,6 @@ vector<string> Collection::returnTags()
     return tags;
 }
 
-
 std::vector<Document*> Collection::findTaggedDocuments(std::string tag)
 {
     std::vector<Document*> taggedDocs;
@@ -58,3 +57,14 @@ void Collection::displayContents()
         cout << documents.at(i)->RetName() << endl;
 }
 
+bool Collection::searchForDocumentByName(std::string documentName)
+{
+	for (int cnt = 0; cnt < documents.size(); cnt++)
+	{
+		if (documents[cnt]->RetName() == documentName)
+		{
+			return true;
+		}
+	}
+	return false;
+}

@@ -23,6 +23,8 @@ class Collection {
         int collectionSize();
         void displayContents();
 
+        bool searchForDocumentByName(std::string);
+        
     private:
         vector <Document*> documents;
         vector <string> tags;
