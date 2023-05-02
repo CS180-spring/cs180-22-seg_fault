@@ -2,7 +2,8 @@
 #include "collection.cpp"
 #include "document.cpp"
 #include "database.cpp"
-using namespace std;
+
+bool searchCollectionForDocumentByName(std::string, Collection);
 
 int main()
 {
@@ -14,31 +15,22 @@ int main()
 	tempCollection.AddTag(tempTag);
 	tempTag = "school";
 	tempCollection.AddTag(tempTag);
+	// std::string tempTag2 = "school";
+	// tempCollection.AddTag(tempTag2);
 	tempCollection.SetName("COLLECTION");
 
 	Document tempDoc1;
-    tempDoc1.AddTag("School");
-    tempDoc1.AddTag("Work");
 	tempDoc1.SetName("firstDoc");
 	tempDoc1.SetLoc("main");
 	tempDoc1.SetType("txt");
 	tempCollection.AddDoc(&tempDoc1);
 	Document tempDoc2;
-    tempDoc2.AddTag("School");
 	tempDoc2.SetName("secondDocument");
 	tempDoc2.SetLoc("folder");
 	tempDoc2.SetType("type");
 	tempCollection.AddDoc(&tempDoc2);
-     string input;
-     cout << "Input tag to search: \n";
-     cin >> input;
-    vector<Document*> temp = tempCollection.findTaggedDocuments(input);
-    cout << "Searching for documents with " << input << " tag: \n";
-    for(int i = 0; i < temp.size(); ++i){
-        cout << temp[i]->RetName() << endl;
-    }
-    cin.clear();
-    cin.ignore(10000, '\n');
+	test.addCollection(&tempCollection);
+	//
 
 	std::string collectionName = "";
 	std::cout << "Input collection name: ";
@@ -62,7 +54,7 @@ int main()
 	}
 	else
 	{
-		cout << collectionName << " collection was NOT found.\n";
+		std::cout << collectionName << " collection was NOT found.\n";
 	}
 	return 0;
 }

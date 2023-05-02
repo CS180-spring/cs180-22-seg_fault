@@ -2,28 +2,27 @@
 #define _DOCUMENT_HPP_
 #include <string>
 #include <vector>
-using namespace std;
+
 class Document {
     public:
 
-        void SetName(string temp);
-        string RetName();
+        void SetName(std::string temp);
+        std::string RetName();
 
-        void SetLoc(string temp);
-        string RetLoc();
+        void SetLoc(std::string temp);
+        std::string RetLoc();
 
-        void SetType(string temp);
-        string RetType();
+        void SetType(std::string temp);
+        std::string RetType();
 
-        void AddTag(string tag);
-        void DelTag(string tag);
+        void AddTag(std::string tag);
+        void DelTag(std::string tag);
 
-        vector <string> tags;
+        std::vector <std::string> tags;
 
     private:
-        string name;
-        string location;
-        string type;
-        int last_opened;
+        std::string name;
+        std::string location;
+        std::string type;
 };
 #endif //_DOCUMENT_HPP_
