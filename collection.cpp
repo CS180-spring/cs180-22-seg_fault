@@ -19,9 +19,11 @@ void Collection::DelDoc(string documentName)
         if (documents[cnt]->RetName() == documentName)
         {
             documents.erase(documents.begin() + cnt);
+            cout << documentName << " was removed from the collection.\n";
             return;
         }
     }
+    cout << documentName << " was not found in the " << RetName() << " collection.";
 }
 
 void Collection::AddTag(string temp) {
