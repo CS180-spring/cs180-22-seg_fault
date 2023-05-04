@@ -2,6 +2,7 @@
 #define _DOCUMENT_HPP_
 #include <string>
 #include <vector>
+#include <algorithm>
 using namespace std;
 class Document {
     public:
@@ -26,4 +27,6 @@ class Document {
         string type;
         int last_opened;
 };
+std::vector <Document*> Ascending(std::vector<Document*>);
+std::vector <Document*> Descending(std::vector<Document*>);
 #endif //_DOCUMENT_HPP_
