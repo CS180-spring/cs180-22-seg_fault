@@ -19,6 +19,8 @@ class Document {
         void AddTag(string tag);
         void DelTag(string tag);
 
+        std::vector<Document*> filter(std::vector<Document*> docs, std::string tag)
+
         vector <string> tags;
 
     private:
@@ -28,22 +30,5 @@ class Document {
         int last_opened;
 };
 
-std::vector<Document*> filter(std::vector<Document*> docs, std::string tag)
-{
-    std::vector<Document*> filteredDocs;
-    Document* currDoc;
-    for(int i = 0; i < docs.size(); ++i)
-    {
-        currDoc = docs.at(i);
-        for(int j = 0; j < currDoc->tags.size(); ++j)
-        {
-            if(currDoc->tags.at(j) == tag)
-            {
-                filteredDocs.push_back(currDoc);
-                break;
-            }
-        }
-    }
-    return filteredDocs;
-}
+
 #endif //_DOCUMENT_HPP_

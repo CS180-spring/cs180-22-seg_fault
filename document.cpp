@@ -36,3 +36,22 @@ void Document::DelTag(string tag) {
         }
     }
 }
+
+std::vector<Document*> Document::filter(std::vector<Document*> docs, std::string tag)
+{
+    std::vector<Document*> filteredDocs;
+    Document* currDoc;
+    for(int i = 0; i < docs.size(); ++i)
+    {
+        currDoc = docs.at(i);
+        for(int j = 0; j < currDoc->tags.size(); ++j)
+        {
+            if(currDoc->tags.at(j) == tag)
+            {
+                filteredDocs.push_back(currDoc);
+                break;
+            }
+        }
+    }
+    return filteredDocs;
+}
