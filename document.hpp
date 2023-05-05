@@ -19,8 +19,6 @@ class Document {
         void AddTag(string tag);
         void DelTag(string tag);
 
-        std::vector<Document*> filter(std::vector<Document*> docs, std::string tag)
-
         vector <string> tags;
 
     private:
@@ -30,5 +28,6 @@ class Document {
         int last_opened;
 };
 
+std::vector<Document*> filter(std::vector<Document*> docs, std::string tag)
 
 #endif //_DOCUMENT_HPP_

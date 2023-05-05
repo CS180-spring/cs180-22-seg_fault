@@ -37,7 +37,7 @@ void Document::DelTag(string tag) {
     }
 }
 
-std::vector<Document*> Document::filter(std::vector<Document*> docs, std::string tag)
+std::vector<Document*> filter(std::vector<Document*> docs, std::string tag)
 {
     std::vector<Document*> filteredDocs;
     Document* currDoc;
