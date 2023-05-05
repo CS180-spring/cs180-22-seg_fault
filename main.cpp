@@ -29,10 +29,10 @@ int main()
 	tempDoc2.SetType("type");
 	tempCollection.AddDoc(&tempDoc2);
 	tempCollectionVector.push_back(tempCollection);
-	 // temporary for testing
-     string input;
-     cout << "Input tag to search: \n";
-     cin >> input;
+	// temporary for testing
+	string input;
+	cout << "Input tag to search: \n";
+	cin >> input;
     vector<Document*> temp = tempCollection.findTaggedDocuments(input);
     cout << "Searching for documents with " << input << " tag: \n";
     for(int i = 0; i < temp.size(); ++i){
@@ -64,6 +64,23 @@ int main()
 	else
 	{
 		cout << collectionName << " collection was NOT found.\n";
+	}
+	tempCollection.DelDoc("firstDoc");
+	tempCollection.displayContents();
+	cout << "Input tag to search: \n";
+	cin >> input;
+	temp.clear();
+	temp = tempCollection.findTaggedDocuments(input);
+	if (temp.size() == 0)
+	{
+		cout << "There are no documents found with tag: " + input << ".\n";
+	}
+	else
+	{
+		cout << "Searching for documents with " << input << " tag: \n";
+		for(int i = 0; i < temp.size(); ++i){
+			cout << temp[i]->RetName() << endl;
+		}
 	}
 	return 0;
 }
