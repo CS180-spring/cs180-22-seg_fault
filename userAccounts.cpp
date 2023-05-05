@@ -15,10 +15,10 @@ bool userAccounts::login() {
     std::cin >> username;
     std::cout << "Password: ";
     std::cin >> password;
-    userDatabase.read_from_csv();
-    std::vector <std::vector<std::string>> data;
-    for (int i = 0; i < ; i+1) {
+    data = userDatabase.read_from_csv();
+    for (int i = 0; i < data.size(); i++) {
         if (data[i][0] == username) {
+           if (data[i][1] == password)
             return true;
         }
     }
@@ -31,7 +31,7 @@ void userAccounts::newAccount() {
     std::cin >> username;
     std::cout << "Password: ";
     std::cin >> password;
-    std::vector <std::vector<std::string>> data;
+    data = userDatabase.read_from_csv();
     data[0][0] = username;
     data[0][1] = password;
     userDatabase.write_to_cvs(data);
@@ -45,12 +45,12 @@ void userAccounts::changePassword() {
     std::cout << "New password: ";
     std::cin >> password;
 
-    userDatabase.read_from_csv();
-    std::vector <std::vector<std::string>> data;
+    data = userDatabase.read_from_csv();
     for (int i = 0; i < ; i+1) {
         if (data[i][0] == username) {
             std::cout << "Enter new password: ";
             std::cin >> password;
+            data[i][1] = password;
             userDatabase.write_to_cvs(data);
         }
     }
@@ -62,8 +62,7 @@ void userAccounts::deleteAccount() {
     std::cout << "Username to delete: ";
     std::cin >> username;
 
-    userDatabase.read_from_csv();
-    std::vector <std::vector<std::string>> data;
+    data = userDatabase.read_from_csv();
     for (int i = 0; i < ; i+1) {
         if (data[i][0] == username) {
             data[i] = "";
