@@ -2,6 +2,9 @@
 #define _DOCUMENT_HPP_
 #include <string>
 #include <vector>
+#include <fstream>
+#include <iostream>
+#include <sstream>
 using namespace std;
 class Document {
     public:
@@ -19,6 +22,12 @@ class Document {
         void DelTag(string tag);
 
         vector <string> tags;
+
+        void create_csv_file();
+        void write_to_csv(string filename, vector<vector<string> > data);
+        void write_csv_output();
+        void view_csv();
+        bool delete_csv();
 
     private:
         string name;
