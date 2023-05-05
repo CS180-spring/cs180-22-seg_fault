@@ -2,7 +2,6 @@
 #include "document.hpp"
 #include <iostream>
 #include <string>
-#include "document.hpp"
 #include <vector>
 
 userAccounts::userAccounts() {
