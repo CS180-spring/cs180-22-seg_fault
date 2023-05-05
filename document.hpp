@@ -2,6 +2,7 @@
 #define _DOCUMENT_HPP_
 #include <string>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 class Document {
@@ -29,5 +30,8 @@ class Document {
 };
 
 std::vector<Document*> filter(std::vector<Document*> docs, std::string tag)
+
+std::vector <Document*> Ascending(std::vector<Document*>);
+std::vector <Document*> Descending(std::vector<Document*>);
 
 #endif //_DOCUMENT_HPP_
