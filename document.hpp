@@ -42,6 +42,6 @@ std::vector <Document*> Ascending(std::vector<Document*>);
 std::vector <Document*> Descending(std::vector<Document*>);
 
 std::vector <Document*> RecentlyModified (std::vector<Document*> input);
-
+std::vector <Document*> OldestModified (std::vector<Document*> input);
 
 #endif //_DOCUMENT_HPP_

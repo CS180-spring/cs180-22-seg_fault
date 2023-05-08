@@ -58,3 +58,9 @@ std::vector <Document*> RecentlyModified (std::vector<Document*> input)
     return temp;
 }
 
+std::vector <Document*> OldestModified (std::vector<Document*> input)
+{
+    std::vector<Document*> temp = input;
+    std::sort(temp.begin(), temp.end(), [](Document* &e1, Document* &e2){ return e1->GetLastOpened()>e2->GetLastOpened(); });
+    return temp;
+}
