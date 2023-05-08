@@ -22,6 +22,13 @@ class Document {
 
         vector <string> tags;
 
+        int GetLastOpened();
+
+        void test(int time) 
+        {
+            this->last_opened = time;
+        };
+
     private:
         string name;
         string location;
@@ -29,9 +36,12 @@ class Document {
         int last_opened;
 };
 
-std::vector<Document*> filter(std::vector<Document*> docs, std::string tag)
+std::vector<Document*> filter(std::vector<Document*> docs, std::string tag);
 
 std::vector <Document*> Ascending(std::vector<Document*>);
 std::vector <Document*> Descending(std::vector<Document*>);
+
+std::vector <Document*> RecentlyModified (std::vector<Document*> input);
+
 
 #endif //_DOCUMENT_HPP_
