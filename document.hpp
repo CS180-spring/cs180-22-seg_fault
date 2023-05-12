@@ -40,7 +40,7 @@ class Document {
 
 std::vector<Document*> filter(std::vector<Document*> docs, std::string tag);
 
-std::vector <Document*> Ascending(std::vector<Document*>);
-std::vector <Document*> Descending(std::vector<Document*>);
+// std::vector <Document*> Ascending(std::vector<Document*>);
+// std::vector <Document*> Descending(std::vector<Document*>);
 
 #endif //_DOCUMENT_HPP_
