@@ -1,20 +1,19 @@
 #ifndef _USERINTERFACE_HPP_
 #define _USERINTERFACE_HPP_
 #include "document.hpp"
-//#include "userAccounts.hpp"
+#include "userAccounts.hpp"
 
 using namespace std;
 
 class userInterface {
 
     public:
-        void mainMenu();
         void loginMenu();
-        void accountManagement();
+        // void accountManagement();
         void documentMenu();
         
     private:
-        //userAccount currentUser;
+        userAccounts currentUser;
         //database currentDatabase;
         bool loggedIn;
 };

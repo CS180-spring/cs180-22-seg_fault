@@ -6,11 +6,11 @@
 class userAccounts {
 
     public:
-        userAccounts();
-        bool login();
-        void newAccount();
-        void changePassword();
-        void deleteAccount();
+        //userAccounts();
+        void login();
+        // void newAccount();
+        // void changePassword();
+        // void deleteAccount();
         
     private:
         Document userDatabase;

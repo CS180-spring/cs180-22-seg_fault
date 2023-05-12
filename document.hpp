@@ -25,11 +25,11 @@ class Document {
 
         vector <string> tags;
 
-        void create_csv_file();
-        void write_to_csv(string filename, vector<vector<string> > data);
-        void write_csv_output();
-        void view_csv();
-        bool delete_csv();
+        void create_csv_file(string);
+        void write_to_csv(string, vector<vector<string> >);
+        void write_csv_output(string);
+        void view_csv(string);
+        bool delete_csv(string);
 
     private:
         string name;
