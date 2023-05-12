@@ -12,6 +12,20 @@ void Collection::AddDoc(Document* temp) {
     documents.push_back(temp);
 }
 
+void Collection::DelDoc(string documentName)
+{
+    for (int cnt = 0; cnt < documents.size(); cnt++)
+    {
+        if (documents[cnt]->RetName() == documentName)
+        {
+            documents.erase(documents.begin() + cnt);
+            cout << documentName << " was removed from the collection.\n";
+            return;
+        }
+    }
+    cout << documentName << " was not found in the " << RetName() << " collection.";
+}
+
 void Collection::AddTag(string temp) {
     tags.push_back(temp);
 }

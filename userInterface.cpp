@@ -1,5 +1,7 @@
 // Terminal user interface
 #include "userInterface.hpp"
+//#include "userAccounts.hpp"
+
 #include "iostream"
 
 // Main Menu
@@ -10,42 +12,42 @@ void userInterface::mainMenu() {
     
     while ((userSelect != 'n') || (userSelect != 'N')) {
         loginMenu();
-        std::cout << "Continue (y/n)?: " << endl;
+        std::cout << "Continue (y/n)?: ";
         cin >> userSelect;
     }
 }
 
 // Login Menu
-void userInterface::loginMenu() {   
-    char option;
-    char userSelect;
-    while (option != 'q') {
-        std::cout << "Select from the following " << std::endl;
-        std::cout << "[1] Login" << std::endl;
-        std::cout << "[2] Account Management" << std::endl;
-        std::cout << "[3] Quit" << std::endl;
-        std::cout << "Selection: ";
-        cin >> userSelect;
+// void userInterface::loginMenu() {   
+//     char option;
+//     char userSelect;
+//     while (option != 'q') {
+//         std::cout << "Select from the following " << std::endl;
+//         std::cout << "[1] Login" << std::endl;
+//         std::cout << "[2] Account Management" << std::endl;
+//         std::cout << "[3] Quit" << std::endl;
+//         std::cout << "Selection: ";
+//         cin >> userSelect;
         
-        if (userSelect == '1') {
-            // loggedIn = currentUser.login();
-            if (loggedIn == true) {
-                documentMenu();
-            }
-        } else if (userSelect == '2') {
-            // accountManagement();
-        } else if (userSelect == '3') {
-            option = 'q';
-        } else {
-            std::cout << "Error: invalid selection." << endl;
-        }
-    }
-}
+//         if (userSelect == '1') {
+//             loggedIn = currentUser.login();
+//             if (loggedIn == true) {
+//                 documentMenu();
+//             }
+//         } else if (userSelect == '2') {
+//             accountManagement();
+//         } else if (userSelect == '3') {
+//             option = 'q'
+//         } else {
+//             std::cout << "Error: invalid selection." std::endl;
+//         }
+//     }
+// }
     
 // Account Management Menu
 // void userInterface::accountManagement() {
-//     char option = '';
-//     char userSelect = '';
+//     char option;
+//     char userSelect;
 
 //     while(option != 'q') {
 //         if (loggedIn == false) {
