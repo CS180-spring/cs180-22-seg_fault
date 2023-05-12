@@ -6,3 +6,4 @@ main.exe
 a.out
 .DS_store
 *.csv
+*.o
