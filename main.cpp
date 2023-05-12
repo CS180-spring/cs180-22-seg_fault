@@ -13,8 +13,9 @@ Collection tempCollection; // temporary for testing
 
 int main()
 {
-	userInterface l;
-	l.documentMenu();
+	userInterface UI;
+	
+	UI.documentMenu();
 	return 0;
 }
 
