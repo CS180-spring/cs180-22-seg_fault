@@ -18,6 +18,8 @@ void userInterface::loginMenu() {
         
         if (userSelect == '1') {
             currentUser.login();
+            if(currentUser.getLogin())
+                documentMenu();
         } else if (userSelect == '2') {
             // currentUser.newAccount();
         } else if (userSelect == '3') {
@@ -78,19 +80,15 @@ void userInterface::documentMenu(){
     Document temp;
     string fileName;
 
-    while(option != 'q') {
-        // if (loggedIn == false) {
-        //     loggedIn = currentUser.login();
-        // }
-
-        // if (loggedIn == true) {
+    while(option != 'q') 
+    {
             std::cout << "Document Management" << std::endl;
             std::cout << "[1] Create New CSV File" << std::endl;
             std::cout << "[2] Search CSV File" << std::endl;
             std::cout << "[3] Update CSV File" << std::endl;
             std::cout << "[4] View CSV File" << std::endl;
             std::cout << "[5] Delete CSV File" << std::endl;
-            std::cout << "[6] Close Program" << std::endl;
+            std::cout << "[6] Logout" << std::endl;
             std::cout << "Selection: ";
             cin >> userSelect;
 
@@ -114,6 +112,5 @@ void userInterface::documentMenu(){
             } else {
                 std::cout << "Error: invalid selection." << endl;
             }
-        // }
     }
 }

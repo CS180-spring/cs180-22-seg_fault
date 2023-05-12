@@ -11,10 +11,10 @@ class userInterface {
         void loginMenu();
         // void accountManagement();
         void documentMenu();
-        
     private:
         userAccounts currentUser;
+        // bool loggedIn;
         //database currentDatabase;
-        bool loggedIn;
+        
 };
-#endif //_USERINTERFACE_HPP_
+#endif //_USERINTERFACE_HPP

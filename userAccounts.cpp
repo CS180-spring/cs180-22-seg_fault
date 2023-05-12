@@ -7,9 +7,11 @@
 // userAccounts::userAccounts() {
 //    userDatabase.create_csv_file("userDatabase");
 // }
+bool userAccounts::getLogin(){
+    return loggedIn;
+}
 
 void userAccounts::login() {
-    bool accountFound = false;
     std::string username, password;
     std::cout << "Username: ";
     std::cin >> username;
@@ -29,11 +31,11 @@ void userAccounts::login() {
             if (row[1] == username && row[3] == password)
             {
                 cout << username << " and " << password << " account found\n";
-                accountFound = true;
+                loggedIn = true;
             }
     }
 
-    if(!accountFound)
+    if(!loggedIn)
     {
         cout << username << " and " << password << " account was NOT found\n";
     }
