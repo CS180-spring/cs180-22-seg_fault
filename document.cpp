@@ -160,7 +160,8 @@ std::vector<Document*> filter(std::vector<Document*> docs, std::string tag)
         }
     }
     return filteredDocs;
-    
+}
+
  std::vector <Document*> Ascending(std::vector<Document*> input) {
    std::vector<Document*> temp = input;
    std::sort(temp.begin(), temp.end(), [](Document* &e1, Document* &e2){ return e1->RetName()>e2->RetName(); });
