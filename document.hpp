@@ -2,12 +2,20 @@
 #define _DOCUMENT_HPP_
 #include <string>
 #include <vector>
+#include <fstream>
+#include <iostream>
+#include <sstream>
 #include <algorithm>
+#include <fstream>
+#include <utility>
+#include <iostream>
+#include <sstream>
 using namespace std;
 
 class Document {
     public:
-
+        vector <string> tags;
+  
         void SetName(string temp);
         string RetName();
 
@@ -20,14 +28,16 @@ class Document {
         void AddTag(string tag);
         void DelTag(string tag);
 
-        vector <string> tags;
-
+        pair<string, string> search_csv(string filename, string search);
+  
         int GetLastOpened();
-
-        void test(int time) 
-        {
-            this->last_opened = time;
-        };
+  
+        bool csv_file_exists(string filename);
+        void create_csv_file(string);
+        void write_to_csv(string, vector<vector<string> >);
+        void write_csv_output(string);
+        void view_csv(string);
+        bool delete_csv(string);
 
     private:
         string name;
