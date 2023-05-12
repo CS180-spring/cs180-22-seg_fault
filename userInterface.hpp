@@ -10,7 +10,7 @@ class userInterface {
     public:
         void mainMenu();
         void loginMenu();
-        void accountMangement();
+        void accountManagement();
         void documentMenu();
         
     private:
