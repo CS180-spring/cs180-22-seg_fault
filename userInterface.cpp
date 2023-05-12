@@ -11,7 +11,7 @@ void userInterface::mainMenu() {
     char userSelect;
     
     while ((userSelect != 'n') || (userSelect != 'N')) {
-        loginMenu();
+        //loginMenu();
         std::cout << "Continue (y/n)?: ";
         cin >> userSelect;
     }
