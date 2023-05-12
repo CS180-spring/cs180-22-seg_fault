@@ -3,6 +3,10 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <fstream>
+#include <utility>
+#include <iostream>
+#include <sstream>
 using namespace std;
 
 class Document {
@@ -20,6 +24,8 @@ class Document {
         void AddTag(string tag);
         void DelTag(string tag);
 
+        pair<string, string> search_csv(string filename, string search);
+
         vector <string> tags;
 
     private:
@@ -29,8 +35,7 @@ class Document {
         int last_opened;
 };
 
-std::vector<Document*> filter(std::vector<Document*> docs, std::string tag)
-
+std::vector <Document*> filter(std::vector<Document*> docs, std::string tag);
 std::vector <Document*> Ascending(std::vector<Document*>);
 std::vector <Document*> Descending(std::vector<Document*>);
 
