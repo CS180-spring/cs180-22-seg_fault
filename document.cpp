@@ -54,6 +54,7 @@ std::vector<Document*> filter(std::vector<Document*> docs, std::string tag)
         }
     }
     return filteredDocs;
+}
     
 std::vector <Document*> Ascending(std::vector<Document*> input) {
   std::vector<Document*> temp = input;
