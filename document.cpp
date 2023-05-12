@@ -37,15 +37,17 @@ void Document::DelTag(string tag) {
     }
 }
 
-bool csv_file_exists(string filename) {
+bool Document::csv_file_exists(string filename) {
     ifstream infile(filename);
     return infile.good();
 }
 
-void Document::create_csv_file() {
-    string filename;
-    cout << "Input New CSV File Name:" << endl;
-    cin >> filename;
+void Document::create_csv_file(string filename) {
+    // filename += ".csv";
+    if(csv_file_exists(filename)){
+        cout << "Error: " << filename << " already exists.\n";
+        return;
+    }
     ofstream outfile;
     outfile.open(filename);
     outfile.close();
@@ -66,10 +68,7 @@ void Document::write_to_csv(string filename, vector<vector<string> > data) {
     outfile.close();
 }
 
-void Document::write_csv_output() {
-    string filename;
-    cout << "Input CSV File Name to write to:" << endl;
-    cin >> filename;
+void Document::write_csv_output(string filename) {
     if(!csv_file_exists(filename)){
         cout << "ERROR: File does not exist" << endl;
         return;
@@ -96,12 +95,15 @@ void Document::write_csv_output() {
     cout << "Data written to " << filename << endl;
 }
 
-void Document::view_csv() {
-    string filename;
-    cout << "Input CSV File to View:" << endl;
-    cin >> filename;
+void Document::view_csv(string filename) {
     if(!csv_file_exists(filename)){
         cout << "ERROR: File does not exist" << endl;
+        return;
+    }
+
+    if (filename == "Accounts.csv")
+    {
+        cout << "Access denied.\n";
         return;
     }
     
@@ -123,10 +125,7 @@ void Document::view_csv() {
     infile.close();
 }
 
-bool Document::delete_csv() {
-    string filename;
-    cout << "Input CSV File to Delete:" << endl;
-    cin >> filename;
+bool Document::delete_csv(string filename) {
     if(!csv_file_exists(filename)){
         cout << "ERROR: File does not exist" << endl;
         return true;

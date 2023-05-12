@@ -2,6 +2,7 @@
 #include "collection.cpp"
 #include "document.cpp"
 #include "userInterface.cpp"
+#include "userAccounts.cpp"
 using namespace std;
 
 bool searchForCollection(std::string);
@@ -14,8 +15,7 @@ Collection tempCollection; // temporary for testing
 int main()
 {
 	userInterface UI;
-	
-	UI.documentMenu();
+	UI.loginMenu();
 	return 0;
 }
 
