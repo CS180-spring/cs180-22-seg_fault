@@ -9,7 +9,7 @@ void userInterface::loginMenu() {
     char option;
     char userSelect;
     while (option != 'q') {
-        std::cout << "Select from the following " << std::endl;
+        std::cout << "\nSelect from the following " << std::endl;
         std::cout << "[1] Login" << std::endl;
         std::cout << "[2] New Account" << std::endl;
         std::cout << "[3] Quit" << std::endl;
@@ -21,7 +21,7 @@ void userInterface::loginMenu() {
             if(currentUser.getLogin())
                 documentMenu();
         } else if (userSelect == '2') {
-            // currentUser.newAccount();
+             currentUser.newAccount();
         } else if (userSelect == '3') {
             option = 'q';
         } else {
@@ -82,7 +82,7 @@ void userInterface::documentMenu(){
 
     while(option != 'q') 
     {
-            std::cout << "Document Management" << std::endl;
+            std::cout << "\nDocument Management" << std::endl;
             std::cout << "[1] Create New CSV File" << std::endl;
             std::cout << "[2] Search CSV File" << std::endl;
             std::cout << "[3] Update CSV File" << std::endl;

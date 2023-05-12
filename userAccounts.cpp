@@ -4,9 +4,6 @@
 #include <string>
 #include <vector>
 
-// userAccounts::userAccounts() {
-//    userDatabase.create_csv_file("userDatabase");
-// }
 bool userAccounts::getLogin(){
     return loggedIn;
 }
@@ -43,17 +40,31 @@ void userAccounts::login() {
 
 } 
 
-// void userAccounts::newAccount() {
-//     std::string username, password;
-//     std::cout << "Username: ";
-//     std::cin >> username;
-//     std::cout << "Password: ";
-//     std::cin >> password;
-//     data = userDatabase.read_from_csv();
-//     data[0][0] = username;
-//     data[0][1] = password;
-//     userDatabase.write_to_cvs(data);
-// }
+//TODO mutliple accounts bug fix
+void userAccounts::newAccount() {
+    std::string username, password;
+    std::cout << "New Username: ";
+    std::cin >> username;
+    std::cout << "New Password: ";
+    std::cin >> password;
+    vector<string> data;
+    data.push_back("username");
+    data.push_back(username);
+    data.push_back("password");
+    data.push_back(password);
+    ofstream outfile;
+    outfile.open("Accounts.csv", ios::app);
+    for (int i = 0; i < data.size(); i++) {
+            outfile << data[i];
+            if (i != data[i].size() - 1) {
+                outfile << ",";
+            }
+        }
+        outfile << endl;
+    outfile.close();
+
+    cout << "New account created.\n";
+}
 
 // void userAccounts::changePassword() {
 //     std::string username, password;

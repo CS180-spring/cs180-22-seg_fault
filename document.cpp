@@ -44,6 +44,10 @@ bool csv_file_exists(string filename) {
 
 void Document::create_csv_file(string filename) {
     // filename += ".csv";
+    if(csv_file_exists(filename)){
+        cout << "Error: " << filename << " already exists.\n";
+        return;
+    }
     ofstream outfile;
     outfile.open(filename);
     outfile.close();
@@ -94,6 +98,12 @@ void Document::write_csv_output(string filename) {
 void Document::view_csv(string filename) {
     if(!csv_file_exists(filename)){
         cout << "ERROR: File does not exist" << endl;
+        return;
+    }
+
+    if (filename == "Accounts.csv")
+    {
+        cout << "Access denied.\n";
         return;
     }
     
