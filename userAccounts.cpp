@@ -9,6 +9,11 @@ bool userAccounts::getLogin(){
 }
 
 void userAccounts::login() {
+    Document temp;
+    if(!temp.csv_file_exists("Accounts.csv")){
+        cout << "Error no accounts exist.\n";
+        return;
+    }
     std::string username, password;
     std::cout << "Username: ";
     std::cin >> username;
@@ -42,6 +47,9 @@ void userAccounts::login() {
 
 //TODO mutliple accounts bug fix
 void userAccounts::newAccount() {
+    Document temp;
+    if(!temp.csv_file_exists("Accounts.csv"))
+        temp.create_csv_file("Accounts.csv");
     std::string username, password;
     std::cout << "New Username: ";
     std::cin >> username;

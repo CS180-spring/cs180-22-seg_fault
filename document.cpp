@@ -37,7 +37,7 @@ void Document::DelTag(string tag) {
     }
 }
 
-bool csv_file_exists(string filename) {
+bool Document::csv_file_exists(string filename) {
     ifstream infile(filename);
     return infile.good();
 }

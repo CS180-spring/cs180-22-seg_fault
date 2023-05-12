@@ -25,6 +25,7 @@ class Document {
 
         vector <string> tags;
 
+        bool csv_file_exists(string filename);
         void create_csv_file(string);
         void write_to_csv(string, vector<vector<string> >);
         void write_csv_output(string);
