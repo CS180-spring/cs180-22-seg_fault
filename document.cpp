@@ -160,15 +160,48 @@ std::vector<Document*> filter(std::vector<Document*> docs, std::string tag)
     }
     return filteredDocs;
 }
-    
-// std::vector <Document*> Ascending(std::vector<Document*> input) {
-//   std::vector<Document*> temp = input;
-//   std::sort(temp.begin(), temp.end(), [](Document* &e1, Document* &e2){ return e1->RetName()>e2->RetName(); });
-//   return temp;
-// }
 
-// std::vector <Document*> Descending(std::vector<Document*> input) {
-//   std::vector<Document*> temp = input;
-//   std::sort(temp.begin(), temp.end(), [](Document* &e1, Document* &e2){ return e1->RetName()<e2->RetName(); });
-//   return temp;
-// }
+ std::vector <Document*> Ascending(std::vector<Document*> input) {
+   std::vector<Document*> temp = input;
+   std::sort(temp.begin(), temp.end(), [](Document* &e1, Document* &e2){ return e1->RetName()>e2->RetName(); });
+   return temp;
+ }
+
+
+std::vector <Document*> Descending(std::vector<Document*> input) {
+  std::vector<Document*> temp = input;
+  std::sort(temp.begin(), temp.end(), [](Document* &e1, Document* &e2){ return e1->RetName()<e2->RetName(); });
+  return temp;
+}
+
+pair<string, string> Document::search_csv(string filename, string search) {
+    if(!csv_file_exists(filename)){
+        std::cout << "ERROR: File does not exist" << endl;
+        return make_pair(to_string(-1), to_string(-1));
+    }
+    int y_key = 0;
+    ifstream infile;
+    infile.open(filename);
+    string line;
+    while (getline(infile, line)) {
+        y_key++;
+        vector<string> row;
+        stringstream ss(line);
+        string field;
+        while (std::getline(ss, field, ',')) {
+            row.push_back(field);
+        }
+        for (int i = 0; i < row.size(); i++) {
+            if (row[i] == search) {
+              infile.close();
+              std::cout << "Document found\n";
+              return make_pair(to_string(y_key), to_string(i));
+            }
+        }
+        std::cout << endl;
+    }
+    std::cout << "Error, document not found\n";
+    infile.close();
+    return make_pair(to_string(-1), to_string(-1));
+}
+
