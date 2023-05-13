@@ -14,7 +14,8 @@ using namespace std;
 
 class Document {
     public:
-
+        vector <string> tags;
+  
         void SetName(string temp);
         string RetName();
 
@@ -28,9 +29,9 @@ class Document {
         void DelTag(string tag);
 
         pair<string, string> search_csv(string filename, string search);
-
-        vector <string> tags;
-
+  
+        int GetLastOpened();
+  
         bool csv_file_exists(string filename);
         void create_csv_file(string);
         void write_to_csv(string, vector<vector<string> >);
@@ -50,5 +51,7 @@ std::vector<Document*> filter(std::vector<Document*> docs, std::string tag);
 std::vector <Document*> Ascending(std::vector<Document*>);
 std::vector <Document*> Descending(std::vector<Document*>);
 
+std::vector <Document*> RecentlyModified (std::vector<Document*> input);
+std::vector <Document*> OldestModified (std::vector<Document*> input);
 
 #endif //_DOCUMENT_HPP_

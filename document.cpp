@@ -37,6 +37,11 @@ void Document::DelTag(string tag) {
     }
 }
 
+std::vector <Document*> Ascending(std::vector<Document*> input) {
+  std::vector<Document*> temp = input;
+  std::sort(temp.begin(), temp.end(), [](Document* &e1, Document* &e2){ return e1->RetName()>e2->RetName(); });
+  return temp;
+
 bool Document::csv_file_exists(string filename) {
     ifstream infile(filename);
     return infile.good();
@@ -159,6 +164,7 @@ std::vector<Document*> filter(std::vector<Document*> docs, std::string tag)
         }
     }
     return filteredDocs;
+  
 }
 
  std::vector <Document*> Ascending(std::vector<Document*> input) {
@@ -174,6 +180,22 @@ std::vector <Document*> Descending(std::vector<Document*> input) {
   return temp;
 }
 
+int Document::GetLastOpened() { return this->last_opened; }
+
+std::vector <Document*> RecentlyModified (std::vector<Document*> input)
+{
+    std::vector<Document*> temp = input;
+    std::sort(temp.begin(), temp.end(), [](Document* &e1, Document* &e2){ return e1->GetLastOpened()<e2->GetLastOpened(); });
+    return temp;
+}
+
+std::vector <Document*> OldestModified (std::vector<Document*> input)
+{
+    std::vector<Document*> temp = input;
+    std::sort(temp.begin(), temp.end(), [](Document* &e1, Document* &e2){ return e1->GetLastOpened()>e2->GetLastOpened(); });
+    return temp;
+}
+  
 pair<string, string> Document::search_csv(string filename, string search) {
     if(!csv_file_exists(filename)){
         std::cout << "ERROR: File does not exist" << endl;
@@ -204,4 +226,4 @@ pair<string, string> Document::search_csv(string filename, string search) {
     infile.close();
     return make_pair(to_string(-1), to_string(-1));
 }
-
+  
