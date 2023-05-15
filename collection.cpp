@@ -41,12 +41,12 @@ vector<string> Collection::returnTags()
 }
 
 
-std::vector<Document*> Collection::findTaggedDocuments(std::string tag)
+vector<Document*> Collection::findTaggedDocuments(string tag)
 {
-    std::vector<Document*> taggedDocs;
+    vector<Document*> taggedDocs;
     taggedDocs = this->returnDocuments();
     Document* curr;
-    std::vector<Document*> ans;
+    vector<Document*> ans;
     for (int i = 0; i < taggedDocs.size(); ++i)
     {
         curr = taggedDocs.at(i);

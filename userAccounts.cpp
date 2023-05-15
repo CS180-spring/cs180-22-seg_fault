@@ -1,8 +1,5 @@
 #include "userAccounts.hpp"
 #include "document.hpp"
-#include <iostream>
-#include <string>
-#include <vector>
 
 bool userAccounts::getLogin(){
     return loggedIn;
@@ -14,11 +11,11 @@ void userAccounts::login() {
         cout << "Error no accounts exist.\n";
         return;
     }
-    std::string username, password;
-    std::cout << "Username: ";
-    std::cin >> username;
-    std::cout << "Password: ";
-    std::cin >> password;
+    string username, password;
+    cout << "Username: ";
+    cin >> username;
+    cout << "Password: ";
+    cin >> password;
 
     ifstream infile;
     infile.open("Accounts.csv");
@@ -50,11 +47,11 @@ void userAccounts::newAccount() {
     Document temp;
     if(!temp.csv_file_exists("Accounts.csv"))
         temp.create_csv_file("Accounts.csv");
-    std::string username, password;
-    std::cout << "New Username: ";
-    std::cin >> username;
-    std::cout << "New Password: ";
-    std::cin >> password;
+    string username, password;
+    cout << "New Username: ";
+    cin >> username;
+    cout << "New Password: ";
+    cin >> password;
     vector<string> data;
     data.push_back("username");
     data.push_back(username);
@@ -75,18 +72,18 @@ void userAccounts::newAccount() {
 }
 
 // void userAccounts::changePassword() {
-//     std::string username, password;
-//     std::cout << "Change Password" << std::endl;
-//     std::cout << "Username: ";
-//     std::cin >> username;
-//     std::cout << "New password: ";
-//     std::cin >> password;
+//     string username, password;
+//     cout << "Change Password" << endl;
+//     cout << "Username: ";
+//     cin >> username;
+//     cout << "New password: ";
+//     cin >> password;
 
 //     data = userDatabase.read_from_csv();
 //     for (int i = 0; i < ; i+1) {
 //         if (data[i][0] == username) {
-//             std::cout << "Enter new password: ";
-//             std::cin >> password;
+//             cout << "Enter new password: ";
+//             cin >> password;
 //             data[i][1] = password;
 //             userDatabase.write_to_cvs(data);
 //         }
@@ -94,10 +91,10 @@ void userAccounts::newAccount() {
 // }
 
 // void userAccounts::deleteAccount() {
-//     std::string username;
-//     std::cout << "Delete User Account" << std::endl;
-//     std::cout << "Username to delete: ";
-//     std::cin >> username;
+//     string username;
+//     cout << "Delete User Account" << endl;
+//     cout << "Username to delete: ";
+//     cin >> username;
 
 //     data = userDatabase.read_from_csv();
 //     for (int i = 0; i < ; i+1) {

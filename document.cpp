@@ -37,11 +37,6 @@ void Document::DelTag(string tag) {
     }
 }
 
-std::vector <Document*> Ascending(std::vector<Document*> input) {
-  std::vector<Document*> temp = input;
-  std::sort(temp.begin(), temp.end(), [](Document* &e1, Document* &e2){ return e1->RetName()>e2->RetName(); });
-  return temp;
-
 bool Document::csv_file_exists(string filename) {
     ifstream infile(filename);
     return infile.good();
@@ -147,9 +142,9 @@ bool Document::delete_csv(string filename) {
     }
 }
 
-std::vector<Document*> filter(std::vector<Document*> docs, std::string tag)
+vector<Document*> filter(vector<Document*> docs, string tag)
 {
-    std::vector<Document*> filteredDocs;
+    vector<Document*> filteredDocs;
     Document* currDoc;
     for(int i = 0; i < docs.size(); ++i)
     {
@@ -167,38 +162,38 @@ std::vector<Document*> filter(std::vector<Document*> docs, std::string tag)
   
 }
 
- std::vector <Document*> Ascending(std::vector<Document*> input) {
-   std::vector<Document*> temp = input;
-   std::sort(temp.begin(), temp.end(), [](Document* &e1, Document* &e2){ return e1->RetName()>e2->RetName(); });
+ vector <Document*> Ascending(vector<Document*> input) {
+   vector<Document*> temp = input;
+   sort(temp.begin(), temp.end(), [](Document* &e1, Document* &e2){ return e1->RetName()>e2->RetName(); });
    return temp;
  }
 
 
-std::vector <Document*> Descending(std::vector<Document*> input) {
-  std::vector<Document*> temp = input;
-  std::sort(temp.begin(), temp.end(), [](Document* &e1, Document* &e2){ return e1->RetName()<e2->RetName(); });
+vector <Document*> Descending(vector<Document*> input) {
+  vector<Document*> temp = input;
+  sort(temp.begin(), temp.end(), [](Document* &e1, Document* &e2){ return e1->RetName()<e2->RetName(); });
   return temp;
 }
 
 int Document::GetLastOpened() { return this->last_opened; }
 
-std::vector <Document*> RecentlyModified (std::vector<Document*> input)
+vector <Document*> RecentlyModified (vector<Document*> input)
 {
-    std::vector<Document*> temp = input;
-    std::sort(temp.begin(), temp.end(), [](Document* &e1, Document* &e2){ return e1->GetLastOpened()<e2->GetLastOpened(); });
+    vector<Document*> temp = input;
+    sort(temp.begin(), temp.end(), [](Document* &e1, Document* &e2){ return e1->GetLastOpened()<e2->GetLastOpened(); });
     return temp;
 }
 
-std::vector <Document*> OldestModified (std::vector<Document*> input)
+vector <Document*> OldestModified (vector<Document*> input)
 {
-    std::vector<Document*> temp = input;
-    std::sort(temp.begin(), temp.end(), [](Document* &e1, Document* &e2){ return e1->GetLastOpened()>e2->GetLastOpened(); });
+    vector<Document*> temp = input;
+    sort(temp.begin(), temp.end(), [](Document* &e1, Document* &e2){ return e1->GetLastOpened()>e2->GetLastOpened(); });
     return temp;
 }
   
 pair<string, string> Document::search_csv(string filename, string search) {
     if(!csv_file_exists(filename)){
-        std::cout << "ERROR: File does not exist" << endl;
+        cout << "ERROR: File does not exist" << endl;
         return make_pair(to_string(-1), to_string(-1));
     }
     int y_key = 0;
@@ -210,19 +205,19 @@ pair<string, string> Document::search_csv(string filename, string search) {
         vector<string> row;
         stringstream ss(line);
         string field;
-        while (std::getline(ss, field, ',')) {
+        while (getline(ss, field, ',')) {
             row.push_back(field);
         }
         for (int i = 0; i < row.size(); i++) {
             if (row[i] == search) {
               infile.close();
-              std::cout << "Document found\n";
+              cout << "Document found\n";
               return make_pair(to_string(y_key), to_string(i));
             }
         }
-        std::cout << endl;
+        cout << endl;
     }
-    std::cout << "Error, document not found\n";
+    cout << "Error, document not found\n";
     infile.close();
     return make_pair(to_string(-1), to_string(-1));
 }

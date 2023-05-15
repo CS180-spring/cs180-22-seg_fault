@@ -1,7 +1,6 @@
 // Terminal user interface
 #include "userInterface.hpp"
 #include "userAccounts.hpp"
-#include "iostream"
 
 // Login Menu
 void userInterface::loginMenu() {   
@@ -9,11 +8,11 @@ void userInterface::loginMenu() {
     char option;
     char userSelect;
     while (option != 'q') {
-        std::cout << "\nSelect from the following " << std::endl;
-        std::cout << "[1] Login" << std::endl;
-        std::cout << "[2] New Account" << std::endl;
-        std::cout << "[3] Quit" << std::endl;
-        std::cout << "Selection: ";
+        cout << "\nSelect from the following " << endl;
+        cout << "[1] Login" << endl;
+        cout << "[2] New Account" << endl;
+        cout << "[3] Quit" << endl;
+        cout << "Selection: ";
         cin >> userSelect;
         
         if (userSelect == '1') {
@@ -25,7 +24,7 @@ void userInterface::loginMenu() {
         } else if (userSelect == '3') {
             option = 'q';
         } else {
-            std::cout << "Error: invalid selection." << std::endl;
+            cout << "Error: invalid selection." << endl;
         }
     }
 }
@@ -41,12 +40,12 @@ void userInterface::loginMenu() {
 //         }
 
 //         if (loggedIn == true) {
-//             std::cout << "Account Management" << std::endl;
-//             std::cout << "[1] Create New Account" << std::endl;
-//             std::cout << "[2] Change Password" << std::endl;
-//             std::cout << "[3] Delete Account" << std::endl;
-//             std::cout << "[4] Return to Previous Menu" << std::endl;
-//             std::cout << "Selection: ";
+//             cout << "Account Management" << endl;
+//             cout << "[1] Create New Account" << endl;
+//             cout << "[2] Change Password" << endl;
+//             cout << "[3] Delete Account" << endl;
+//             cout << "[4] Return to Previous Menu" << endl;
+//             cout << "Selection: ";
 //             cin >> userSelect;
 
 //             if (userSelect == '1') {
@@ -58,7 +57,7 @@ void userInterface::loginMenu() {
 //             } else if (userSelect == '3') {
 //                 option = 'q';
 //             } else {
-//                 std::cout << "Error: invalid selection." std::endl;
+//                 cout << "Error: invalid selection." endl;
 //             }
 //         }
 //     }
@@ -82,14 +81,14 @@ void userInterface::documentMenu(){
 
     while(option != 'q') 
     {
-            std::cout << "\nDocument Management" << std::endl;
-            std::cout << "[1] Create New CSV File" << std::endl;
-            std::cout << "[2] Search CSV File" << std::endl;
-            std::cout << "[3] Update CSV File" << std::endl;
-            std::cout << "[4] View CSV File" << std::endl;
-            std::cout << "[5] Delete CSV File" << std::endl;
-            std::cout << "[6] Logout" << std::endl;
-            std::cout << "Selection: ";
+            cout << "\nDocument Management" << endl;
+            cout << "[1] Create New CSV File" << endl;
+            cout << "[2] Search CSV File" << endl;
+            cout << "[3] Update CSV File" << endl;
+            cout << "[4] View CSV File" << endl;
+            cout << "[5] Delete CSV File" << endl;
+            cout << "[6] Logout" << endl;
+            cout << "Selection: ";
             cin >> userSelect;
 
             if (userSelect == '1') {
@@ -110,7 +109,7 @@ void userInterface::documentMenu(){
             } else if (userSelect == '6') {
                 option = 'q';
             } else {
-                std::cout << "Error: invalid selection." << endl;
+                cout << "Error: invalid selection." << endl;
             }
     }
 }
