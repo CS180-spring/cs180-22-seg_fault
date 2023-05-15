@@ -1,15 +1,14 @@
 #ifndef _DOCUMENT_HPP_
 #define _DOCUMENT_HPP_
+
 #include <string>
 #include <vector>
 #include <fstream>
 #include <iostream>
 #include <sstream>
 #include <algorithm>
-#include <fstream>
 #include <utility>
-#include <iostream>
-#include <sstream>
+
 using namespace std;
 
 class Document {

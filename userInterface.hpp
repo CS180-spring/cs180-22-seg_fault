@@ -1,5 +1,6 @@
 #ifndef _USERINTERFACE_HPP_
 #define _USERINTERFACE_HPP_
+
 #include "document.hpp"
 #include "userAccounts.hpp"
 
