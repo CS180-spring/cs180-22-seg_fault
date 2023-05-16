@@ -12,11 +12,9 @@ char c;
 
 int main()
 {
-	//encrypt();
-	decrypt();
-	// userInterface UI;
-	// UI.loginMenu();
-	
+	srand(time(0));
+	userInterface UI;
+	UI.loginMenu();
 	return 0;
 }
 

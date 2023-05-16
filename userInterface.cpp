@@ -2,6 +2,11 @@
 #include "userInterface.hpp"
 #include "userAccounts.hpp"
 
+userInterface::userInterface()
+{
+    encryptionKey = 1 + (rand() % 100); // generate random encryption/decryption key from 1-100
+}
+
 // Login Menu
 void userInterface::loginMenu() {   
     cout << "WELCOME TO DOCUMENT DATA STORE" << endl;
@@ -16,11 +21,11 @@ void userInterface::loginMenu() {
         cin >> userSelect;
         
         if (userSelect == '1') {
-            currentUser.login();
-            if(currentUser.getLogin())
+            currentUser.login(encryptionKey);
+            if(currentUser.getLogin(encryptionKey))
                 documentMenu();
         } else if (userSelect == '2') {
-             currentUser.newAccount();
+             currentUser.newAccount(encryptionKey);
         } else if (userSelect == '3') {
             option = 'q';
         } else {
