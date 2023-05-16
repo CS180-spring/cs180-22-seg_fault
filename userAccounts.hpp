@@ -6,6 +6,7 @@
 class userAccounts {
 
     public:
+        userAccounts();
         void login();
         void newAccount();
         // void changePassword();

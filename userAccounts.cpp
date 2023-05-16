@@ -1,6 +1,11 @@
 #include "userAccounts.hpp"
 #include "document.hpp"
 
+userAccounts::userAccounts()
+{
+    loggedIn = false;
+}
+
 bool userAccounts::getLogin(){
     return loggedIn;
 }
