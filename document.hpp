@@ -13,27 +13,27 @@ using namespace std;
 
 class Document {
     public:
-        vector <string> tags;
+        vector<string> tags;
   
-        void SetName(string temp);
+        void SetName(string);
         string RetName();
 
-        void SetLoc(string temp);
+        void SetLoc(string);
         string RetLoc();
 
-        void SetType(string temp);
+        void SetType(string);
         string RetType();
 
-        void AddTag(string tag);
-        void DelTag(string tag);
+        void AddTag(string);
+        void DelTag(string);
 
-        pair<string, string> search_csv(string filename, string search);
+        pair<string, string> search_csv(string, string);
   
         int GetLastOpened();
   
-        bool csv_file_exists(string filename);
+        bool csv_file_exists(string);
         void create_csv_file(string);
-        void write_to_csv(string, vector<vector<string> >);
+        void write_to_csv(string, vector<vector<string>>);
         void write_csv_output(string);
         void view_csv(string);
         bool delete_csv(string);
@@ -45,12 +45,12 @@ class Document {
         int last_opened;
 };
 
-std::vector<Document*> filter(std::vector<Document*> docs, std::string tag);
+vector<Document*> filter(vector<Document*>, string);
 
-std::vector <Document*> Ascending(std::vector<Document*>);
-std::vector <Document*> Descending(std::vector<Document*>);
+vector<Document*> Ascending(vector<Document*>);
+vector<Document*> Descending(vector<Document*>);
 
-std::vector <Document*> RecentlyModified (std::vector<Document*> input);
-std::vector <Document*> OldestModified (std::vector<Document*> input);
+vector<Document*> RecentlyModified (vector<Document*>);
+vector<Document*> OldestModified (vector<Document*>);
 
 #endif //_DOCUMENT_HPP_

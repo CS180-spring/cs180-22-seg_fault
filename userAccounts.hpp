@@ -17,4 +17,5 @@ class userAccounts {
         Document userDatabase;
         bool loggedIn;
 };
+
 #endif //_USERACCOUNTS_HPP_
