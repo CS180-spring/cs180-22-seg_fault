@@ -84,10 +84,11 @@ void userInterface::documentMenu(){
             cout << "\nDocument Management" << endl;
             cout << "[1] Create New CSV File" << endl;
             cout << "[2] Search CSV File" << endl;
-            cout << "[3] Update CSV File" << endl;
+            cout << "[3] Add Data to CSV File" << endl;
             cout << "[4] View CSV File" << endl;
             cout << "[5] Delete CSV File" << endl;
-            cout << "[6] Logout" << endl;
+            cout << "[6] Update CSV File" << endl;
+            cout << "[7] Logout" << endl;
             cout << "Selection: ";
             cin >> userSelect;
 
@@ -96,7 +97,11 @@ void userInterface::documentMenu(){
                 temp.create_csv_file(fileName);
             } else if (userSelect == '2') {
                 fileName = getCSVFileName();
-                // TODO: insert search CSV file function call here
+                string searchQuery = "";
+                cout << "Input value to search in " << fileName << ": ";
+                cin.ignore();
+                getline(cin, searchQuery);
+                temp.search_csv(fileName, searchQuery);
             } else if (userSelect == '3') {
                 fileName = getCSVFileName();
                 temp.write_csv_output(fileName);
@@ -107,6 +112,9 @@ void userInterface::documentMenu(){
                 fileName = getCSVFileName();
                 temp.delete_csv(fileName);
             } else if (userSelect == '6') {
+                fileName = getCSVFileName();
+                // TODO: insert updating CSV file function call here
+            } else if (userSelect == '7') {
                 option = 'q';
             } else {
                 cout << "Error: invalid selection." << endl;
