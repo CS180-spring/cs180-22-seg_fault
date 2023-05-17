@@ -26,9 +26,11 @@ void userAccounts::login() {
     Document temp;
     if(!temp.csv_file_exists("Accounts.csv"))
     {
-        cout << "Error no accounts exist.\n";
+        cout << "\nError no accounts exist.\n";
         return;
     }
+    cin.clear();
+    cin.ignore(99999, '\n');
     string username, password;
     int inputEncryptionKey;
     cout << "Username: ";
@@ -37,6 +39,13 @@ void userAccounts::login() {
     cin >> password;
     cout << "Encryption Key: ";
     cin >> inputEncryptionKey;
+    if (cin.fail()) // if it's not an int, then invalid key
+    { 
+        cout << "\nInvalid encryption key, returning to login menu.\n";
+        cin.clear();
+        cin.ignore(99999, '\n');
+        return;
+    }
 
     ifstream infile;
     infile.open("Accounts.csv");
@@ -56,13 +65,15 @@ void userAccounts::login() {
         {
             row.clear();
             infile.close();
-            cout << "Invalid encryption key, returning to login menu.\n";
+            cout << "\nInvalid encryption key, returning to login menu.\n";
+            cin.clear();
+            cin.ignore(99999, '\n');
             return;
         }
         
         if (row[1] == username && row[3] == password)
         {
-            cout << "Valid encryption key. Continuing search for \"" << username << "\"" << " account.\n";
+            cout << "\nValid encryption key. Continuing search for \"" << username << "\"" << " account.\n";
             cout << "\"" << username << "\"" << " account was found. Logging in.\n";
             loggedIn = true;
             infile.close();
@@ -86,7 +97,7 @@ void userAccounts::newAccount(int encryptionKey) {
         temp.create_csv_file("Accounts.csv");
         vector<string> encrypt;
         encrypt.push_back("key");
-        encrypt.push_back(to_string(encryptionKey) + ",");
+        encrypt.push_back(to_string(encryptionKey));
         ofstream outfile;
         outfile.open("Accounts.csv", ios::app);
         for (int i = 0; i < encrypt.size(); i++) {
@@ -119,7 +130,7 @@ void userAccounts::newAccount(int encryptionKey) {
         outfile << endl;
     outfile.close();
 
-    cout << "New account created.\n";
+    cout << "\n" << username << " account was created.\n";
 }
 
 // void userAccounts::changePassword() {
