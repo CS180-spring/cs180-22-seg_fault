@@ -21,7 +21,7 @@ void userInterface::loginMenu() {
         cin >> userSelect;
         
         if (userSelect == '1') {
-            currentUser.login(encryptionKey);
+            currentUser.login();
             if(currentUser.getLogin(encryptionKey))
                 documentMenu();
         } else if (userSelect == '2') {

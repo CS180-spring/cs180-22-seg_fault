@@ -22,7 +22,7 @@ void userAccounts::logout()
     userDatabase.delete_csv("Accounts-decrypted.csv");
 }
 
-void userAccounts::login(int encryptionKey) {
+void userAccounts::login() {
     Document temp;
     if(!temp.csv_file_exists("Accounts.csv"))
     {
