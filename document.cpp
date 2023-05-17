@@ -96,6 +96,7 @@ void Document::write_csv_output(string filename) {
         {
             break;
         }
+        replace(input.begin(), input.end(), ',', ' ');
         auto iterator = unique(input.begin(), input.end(), spaceComparator); // referenced https://www.techiedelight.com/replace-consecutive-whitespace-with-a-single-space-in-cpp/
         input.erase(iterator, input.end());
         replace(input.begin(), input.end(), ' ', ',');
