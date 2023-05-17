@@ -10,8 +10,16 @@ bool userAccounts::getLogin(int encryptionKey){
     if (loggedIn)
     {
         storedEncryptionKey = encryptionKey;
+        userDatabase.decrypt(encryptionKey);
     }
     return loggedIn;
+}
+
+void userAccounts::logout()
+{
+    loggedIn = false;
+    userDatabase.encrypt(storedEncryptionKey);
+    userDatabase.delete_csv("Accounts-decrypted.csv");
 }
 
 void userAccounts::login(int encryptionKey) {

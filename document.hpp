@@ -38,6 +38,9 @@ class Document {
         void view_csv(string);
         bool delete_csv(string);
 
+        void encrypt(int);
+        void decrypt(int);
+
     private:
         string name;
         string location;

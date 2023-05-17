@@ -3,50 +3,12 @@
 #include "userInterface.hpp"
 #include "userAccounts.hpp"
 
-void encrypt();
-void decrypt();
-
-int key = 5;
-fstream fin, fout;
-char c;
-
 int main()
 {
 	srand(time(0));
 	userInterface UI;
 	UI.loginMenu();
 	return 0;
-}
-
-void encrypt()
-{
-	fin.open("Accounts.csv", fstream::in);
-	fout.open("Accounts-encrypted.csv", fstream::out);
-
-	while (fin >> noskipws >> c)
-	{
-		int temp = (c + key);
-
-		fout << (char)temp;
-	}
-
-	fin.close();
-	fout.close();
-}
-
-void decrypt()
-{
-	fin.open("Accounts-encrypted.csv", fstream::in);
-	fout.open("Accounts-decrypted.csv", fstream::out);
-
-	while (fin >> noskipws >> c)
-	{
-		int temp = (c - key);
-
-		fout << (char)temp;
-	}
-	fin.close();
-	fout.close();
 }
 
 // bool searchForCollection(std::string);

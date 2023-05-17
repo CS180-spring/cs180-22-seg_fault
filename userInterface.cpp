@@ -106,7 +106,12 @@ void userInterface::documentMenu(){
                 cout << "Input value to search in " << fileName << ": ";
                 cin.ignore();
                 getline(cin, searchQuery);
-                temp.search_csv(fileName, searchQuery);
+                pair<string, string> foundSearchQueryCoordinates;
+                foundSearchQueryCoordinates = temp.search_csv(fileName, searchQuery);
+                if (foundSearchQueryCoordinates.first != "-1" && foundSearchQueryCoordinates.second != "-1")
+                {
+                    cout << "\n" << searchQuery << " was found at " << "[" << foundSearchQueryCoordinates.first << ", " << foundSearchQueryCoordinates.second << "] in " + fileName << ".\n";
+                }
             } else if (userSelect == '3') {
                 fileName = getCSVFileName();
                 temp.write_csv_output(fileName);
@@ -121,6 +126,7 @@ void userInterface::documentMenu(){
                 // TODO: insert updating CSV file function call here
             } else if (userSelect == '7') {
                 option = 'q';
+                currentUser.logout();
             } else {
                 cout << "Error: invalid selection." << endl;
             }

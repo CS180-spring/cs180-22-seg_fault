@@ -8,6 +8,7 @@ class userAccounts {
     public:
         userAccounts();
         bool getLogin(int);
+        void logout();
         void login(int);
         void newAccount(int);
         // void changePassword();

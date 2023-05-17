@@ -221,4 +221,41 @@ pair<string, string> Document::search_csv(string filename, string search) {
     infile.close();
     return make_pair(to_string(-1), to_string(-1));
 }
-  
+
+void Document::encrypt(int encryptionKey)
+{
+    fstream fin, fout;
+    char c;
+	fin.open("Accounts.csv", fstream::in);
+	fout.open("Accounts-encrypted.csv", fstream::out);
+
+	while (fin >> noskipws >> c)
+	{
+		int temp = (c + encryptionKey);
+
+		fout << (char)temp;
+	}
+	fin.close();
+	fout.close();
+}
+
+void Document::decrypt(int encryptionKey)
+{
+    fstream fin, fout;
+    char c;
+    if(!csv_file_exists("Accounts-encrypted.csv"))
+    {
+        encrypt(encryptionKey);
+    }
+	fin.open("Accounts-encrypted.csv", fstream::in);
+	fout.open("Accounts-decrypted.csv", fstream::out);
+
+	while (fin >> noskipws >> c)
+	{
+		int temp = (c - encryptionKey);
+
+		fout << (char)temp;
+	}
+	fin.close();
+	fout.close();
+}
