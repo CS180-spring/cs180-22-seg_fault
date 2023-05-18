@@ -130,6 +130,11 @@ bool Document::delete_csv(string filename) {
         cout << "ERROR: File does not exist" << endl;
         return true;
     }
+    if (filename == "Accounts.csv") // this should be normally allowed, but it'd be better to implement a way that restricts deleting Accounts.csv if currentUser was a manager or something
+    {
+        cout << "Access denied.\n";
+        return true;
+    }
     if (remove(filename.c_str()) != 0) 
     {
         cout << "Error deleting file: " << filename << endl;
@@ -218,6 +223,11 @@ pair<string, string> Document::search_csv(string filename, string search) {
     if(!csv_file_exists(filename)){
         cout << "ERROR: File does not exist" << endl;
         return make_pair(to_string(-1), to_string(-1));
+    }
+    if (filename == "Accounts.csv")
+    {
+        cout << "Access denied.\n";
+        return;
     }
     int y_key = 0;
     ifstream infile;
