@@ -12,9 +12,6 @@ bool userAccounts::getLogin(int encryptionKey){
         storedEncryptionKey = encryptionKey;
         userDatabase.decrypt(encryptionKey);
     }
-}
-
-bool userAccounts::getLogin(){
     return loggedIn;
 }
 
@@ -119,7 +116,6 @@ void userAccounts::newAccount(int encryptionKey) {
             outfile << endl;
         outfile.close();
     }
-    string username, password;
     string username, password, userInput;
     cout << "New Username: ";
     cin >> username;
@@ -225,7 +221,7 @@ void userAccounts::deleteAccount() {
     cout << "Deleting User Account" << endl;
     cout << "Username to delete: ";
     cin >> username;
-    cout << "Pasword: ";
+    cout << "Password: ";
     cin >> password;
     cout << "Security Question: What is the name of your first pet: ";
     cin >> security;

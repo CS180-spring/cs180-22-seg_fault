@@ -11,8 +11,6 @@ class userAccounts {
         void logout();
         void login();
         void newAccount(int);
-        void login();
-        void newAccount();
         void changePassword();
         void deleteAccount();   
         bool getLogin();
