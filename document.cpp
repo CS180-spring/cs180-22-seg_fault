@@ -168,7 +168,7 @@ void Document::update_csv(string filename){
     }
 
     view_csv(filename);
-    cout << "Which line would you like to edit? ";
+    cout << "Which line would you like to edit? You can only insert data at line 0 on an empty document: ";
     cin >> num;
     cout << "Would you like to insert or replace? 0 to replace, 1 to insert: ";
     do {
@@ -215,7 +215,7 @@ void Document::update_csv(string filename){
                 if (flag) {
                     data.push_back(row);
                 }
-                row.clear();
+//                row.clear();
             }
         }
         else {
@@ -223,9 +223,13 @@ void Document::update_csv(string filename){
         }
     }
 
+    if (num == 0) {
+        data.push_back(temp);
+    }
+
     infile.close();
 
-    if (num < 1 || num >= data.size()) {
+    if ((num < 1 || num >= data.size()) && (!flag && num != 0)) {
         cout << "Error, invalid line selected.\n";
         return;
     }
