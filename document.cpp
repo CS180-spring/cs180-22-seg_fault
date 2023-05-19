@@ -130,6 +130,11 @@ bool Document::delete_csv(string filename) {
         cout << "ERROR: File does not exist" << endl;
         return true;
     }
+    if (filename == "Accounts.csv") // this should be normally allowed, but it'd be better to implement a way that restricts deleting Accounts.csv if currentUser was a manager or something
+    {
+        cout << "Access denied.\n";
+        return true;
+    }
     if (remove(filename.c_str()) != 0) 
     {
         cout << "Error deleting file: " << filename << endl;
@@ -190,11 +195,39 @@ vector <Document*> OldestModified (vector<Document*> input)
     sort(temp.begin(), temp.end(), [](Document* &e1, Document* &e2){ return e1->GetLastOpened()>e2->GetLastOpened(); });
     return temp;
 }
-  
+
+bool returnRowContents(string fileName, string searchQuery)
+{
+    string response = "";
+    cout << "Print out contents of row where \"" << searchQuery << "\" was found in \"" << fileName << "\"? Enter (Y/N): ";
+    transform(response.begin(), response.end(), response.begin(), ::tolower);
+    getline(cin, response);
+    while (response != "y" && response != "n")
+    {
+        cout << "\nError, \"" << response << "\" was invalid.\n";
+        cout << "Print out contents of row where \"" << searchQuery << "\" was found in \"" << fileName << "\"? Enter (Y/N): ";
+        getline(cin, response);
+        transform(response.begin(), response.end(), response.begin(), ::tolower);
+    }
+    if (response == "y")
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
 pair<string, string> Document::search_csv(string filename, string search) {
     if(!csv_file_exists(filename)){
         cout << "ERROR: File does not exist" << endl;
         return make_pair(to_string(-1), to_string(-1));
+    }
+    if (filename == "Accounts.csv")
+    {
+        cout << "Access denied.\n";
+        return;
     }
     int y_key = 0;
     ifstream infile;
@@ -212,6 +245,22 @@ pair<string, string> Document::search_csv(string filename, string search) {
             if (row[i] == search) {
               infile.close();
               cout << "Document found\n";
+              bool returnRowContentsOfQuery = returnRowContents(filename, search);
+              if (returnRowContentsOfQuery)
+              {
+                for (i = 0; i < row.size(); i++)
+                {
+                    if (i + 1 == row.size())
+                    {
+                        cout << row[i];
+                    }
+                    else
+                    {
+                        cout << row[i] << ",";
+                    }
+                }
+                cout << "\n";
+              }
               return make_pair(to_string(y_key), to_string(i));
             }
         }
@@ -221,4 +270,3 @@ pair<string, string> Document::search_csv(string filename, string search) {
     infile.close();
     return make_pair(to_string(-1), to_string(-1));
 }
-  
