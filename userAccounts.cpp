@@ -97,14 +97,12 @@ void userAccounts::login() {
     if(!loggedIn)
     {
         cout << username << " account was NOT found.\n";
-        // cout << username << " and " << password << " account was NOT found\n";
         cout << "Username or password incorrect\n";
     }
     infile.close();
 
 } 
 
-//TODO mutliple accounts bug fix
 void userAccounts::newAccount(int encryptionKey) {
     Document temp;
     if(!temp.csv_file_exists("Accounts.csv"))

@@ -40,40 +40,6 @@ void userInterface::loginMenu() {
         }
     }
 }
-    
-// Account Management Menu
-// void userInterface::accountManagement() {
-//     char option;
-//     char userSelect;
-
-//     while(option != 'q') {
-//         if (loggedIn == false) {
-//             loggedIn = currentUser.login();
-//         }
-
-//         if (loggedIn == true) {
-//             cout << "Account Management" << endl;
-//             cout << "[1] Create New Account" << endl;
-//             cout << "[2] Change Password" << endl;
-//             cout << "[3] Delete Account" << endl;
-//             cout << "[4] Return to Previous Menu" << endl;
-//             cout << "Selection: ";
-//             cin >> userSelect;
-
-//             if (userSelect == '1') {
-//                 currentUser.newAccount();
-//             } else if (userSelect == '2') {
-//                 currentUser.changePassword();
-//             } else if (userSelect == '3') {
-//                 currentUser.deleteAccount();
-//             } else if (userSelect == '3') {
-//                 option = 'q';
-//             } else {
-//                 cout << "Error: invalid selection." endl;
-//             }
-//         }
-//     }
-// }
 
 string getCSVFileName()
 {
