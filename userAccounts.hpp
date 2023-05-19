@@ -6,9 +6,10 @@
 class userAccounts {
 
     public:
+        userAccounts();
         void login();
         void newAccount();
-        // void changePassword();
+        void changePassword();
         // void deleteAccount();
         bool getLogin();
         
