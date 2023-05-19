@@ -116,6 +116,7 @@ void userInterface::documentMenu(){
                 temp.delete_csv(fileName);
             } else if (userSelect == '6') {
                 fileName = getCSVFileName();
+                temp.update_csv(fileName);
                 // TODO: insert updating CSV file function call here
             } else if (userSelect == '7') {
                 option = 'q';
