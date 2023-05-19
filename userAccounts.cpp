@@ -149,7 +149,7 @@ void userAccounts::deleteAccount() {
         return;
     }
 
-    string username;
+    string username, password, security;
     fstream accounts;
     string line;
     vector<string> lines;
@@ -157,6 +157,10 @@ void userAccounts::deleteAccount() {
     cout << "Deleting User Account" << endl;
     cout << "Username to delete: ";
     cin >> username;
+    cout << "Pasword: ";
+    cin >> password;
+    cout << "Security Question: What is the name of your first pet: ";
+    cin >> security;
     accounts.open("Accounts.csv");
     if (!accounts.is_open()) {
         cout << "Error opening file.\n";
@@ -169,7 +173,7 @@ void userAccounts::deleteAccount() {
         while (getline(ss, field, ',')) {
             row.push_back(field);
         }
-        if (row[1] == username) {
+        if (row[1] == username && row[3] == password && row[5] == security) {
             cout << "Deleting " << username << ".\n";
             row.clear();
             deleted = true;

@@ -12,7 +12,8 @@ void userInterface::loginMenu() {
         cout << "[1] Login" << endl;
         cout << "[2] New Account" << endl;
         cout << "[3] Change Password" << endl;
-        cout << "[4] Quit" << endl;
+        cout << "[4] Delete Account" << endl;
+        cout << "[5] Quit" << endl;
         cout << "Selection: ";
         cin >> userSelect;
         
@@ -25,6 +26,8 @@ void userInterface::loginMenu() {
         } else if (userSelect == '3') {
             currentUser.changePassword();
         } else if (userSelect == '4') {
+            currentUser.deleteAccount();
+        } else if (userSelect == '5') {
             option = 'q';
         } else {
             cout << "Error: invalid selection." << endl;
