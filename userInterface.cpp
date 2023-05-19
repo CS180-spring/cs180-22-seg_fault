@@ -98,7 +98,7 @@ void userInterface::documentMenu(){
             cout << "[3] Add Data to CSV File" << endl;
             cout << "[4] View CSV File" << endl;
             cout << "[5] Delete CSV File" << endl;
-            cout << "[6] Update CSV File" << endl;
+            cout << "[6] Edit CSV File" << endl;
             cout << "[7] Logout" << endl;
             cout << "Selection: ";
             cin >> userSelect;
