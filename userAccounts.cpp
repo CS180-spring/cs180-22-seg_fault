@@ -33,7 +33,7 @@ void userAccounts::login() {
         }
             if (row[1] == username && row[3] == password)
             {
-                cout << "Welcome back" << username << endl;
+                cout << "Welcome back " << username << endl;
                 loggedIn = true;
             }
     }
