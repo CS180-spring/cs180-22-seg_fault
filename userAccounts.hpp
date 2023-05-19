@@ -9,7 +9,7 @@ class userAccounts {
         void login();
         void newAccount();
         // void changePassword();
-        // void deleteAccount();
+        void deleteAccount();   
         bool getLogin();
         
     private:

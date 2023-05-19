@@ -90,18 +90,61 @@ void userAccounts::newAccount() {
 //     }
 // }
 
-// void userAccounts::deleteAccount() {
-//     string username;
-//     cout << "Delete User Account" << endl;
-//     cout << "Username to delete: ";
-//     cin >> username;
+void userAccounts::deleteAccount() {
+    Document temp;
+    if(!temp.csv_file_exists("Accounts.csv")){
+        cout << "Error no accounts exist.\n";
+        return;
+    }
 
-//     data = userDatabase.read_from_csv();
-//     for (int i = 0; i < ; i+1) {
-//         if (data[i][0] == username) {
-//             data[i] = "";
-//             data[0] = "";
-//         }
-//         userDatabase.write_to_cvs(data);
-//     }
-// }
+    string username;
+    fstream accounts;
+    string line;
+    vector<string> lines;
+    bool deleted = false;
+    cout << "Deleting User Account" << endl;
+    cout << "Username to delete: ";
+    cin >> username;
+    accounts.open("Accounts.csv");
+    if (!accounts.is_open()) {
+        cout << "Error opening file.\n";
+        return;
+    }
+    while (getline(accounts, line)) {
+        vector<string> row;
+        stringstream ss(line);
+        string field;
+        while (getline(ss, field, ',')) {
+            row.push_back(field);
+        }
+        if (row[1] == username) {
+            cout << "Deleting " << username << ".\n";
+            row.clear();
+            deleted = true;
+        }
+        else {
+            string keep_row;
+            for (int i = 0; i < row.size(); ++i) {
+                keep_row += row.at(i);
+                keep_row += ',';
+            }
+            lines.push_back(keep_row);
+        }
+    }
+    if (deleted) {
+        ofstream fout;
+        fout.open("Accounts.csv");
+        if (!fout.is_open()) {
+            cout << "Error opening file\n";
+            return;
+        }
+        for (int i = 0; i < lines.size(); i++) {
+            fout << lines.at(i) << endl;
+        }
+        fout.close();
+    }
+    else {
+        cout << "Error deleting " << username << "'s account.\n";
+    }
+    return;
+}
