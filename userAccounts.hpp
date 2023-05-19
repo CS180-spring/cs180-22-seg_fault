@@ -11,8 +11,11 @@ class userAccounts {
         void logout();
         void login();
         void newAccount(int);
-        // void changePassword();
-        // void deleteAccount();
+        void login();
+        void newAccount();
+        void changePassword();
+        void deleteAccount();   
+        bool getLogin();
         
     private:
         Document userDatabase;

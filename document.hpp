@@ -8,6 +8,7 @@
 #include <sstream>
 #include <algorithm>
 #include <utility>
+#include <cstdio>
 
 using namespace std;
 
@@ -36,7 +37,9 @@ class Document {
         void write_to_csv(string, vector<vector<string>>);
         void write_csv_output(string);
         void view_csv(string);
+        void update_csv(string);
         bool delete_csv(string);
+        void deleteRowInCSV(const string& filename, int rowNumber);
 
         void encrypt(int);
         void decrypt(int);

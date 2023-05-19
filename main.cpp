@@ -1,7 +1,7 @@
-#include "collection.hpp"
-#include "document.hpp"
-#include "userInterface.hpp"
-#include "userAccounts.hpp"
+#include "collection.cpp"
+#include "document.cpp"
+#include "userInterface.cpp"
+#include "userAccounts.cpp"
 
 int main()
 {
