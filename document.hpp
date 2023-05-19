@@ -37,6 +37,7 @@ class Document {
         void write_csv_output(string);
         void view_csv(string);
         bool delete_csv(string);
+        void deleteRowInCSV(const string& filename, int rowNumber);
 
     private:
         string name;

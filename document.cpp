@@ -221,4 +221,40 @@ pair<string, string> Document::search_csv(string filename, string search) {
     infile.close();
     return make_pair(to_string(-1), to_string(-1));
 }
+
+void Document::deleteRowInCSV(const string& filename, int rowNumber) {
+    ifstream file(filename);
+    if(!csv_file_exists(filename)){
+        cout << "ERROR: File does not exist" << endl;
+        return;
+    }
+
+    string line;
+    vector<string> rows;
+
+    while (getline(file, line)) {
+        rows.push_back(line);
+    }
+
+    file.close();
+
+    if (rowNumber < 0 || rowNumber >= rows.size()) {
+        cout << "Invalid row number." << endl;
+        return;
+    }
+
+    rows.erase(rows.begin() + rowNumber);
+
+    ofstream outputFile(filename);
+    if (!outputFile) {
+        cout << "Failed to open the file for writing." << endl;
+        return;
+    }
+
+    for (const auto& row : rows) {
+        outputFile << row << endl;
+    }
+
+    outputFile.close();
+}
   
