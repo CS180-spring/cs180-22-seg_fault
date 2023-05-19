@@ -33,7 +33,7 @@ class Document {
         int GetLastOpened();
   
         bool csv_file_exists(string);
-        void create_csv_file(string);
+        void create_csv_file(string, string);
         void write_to_csv(string, vector<vector<string>>);
         void write_csv_output(string);
         void view_csv(string);

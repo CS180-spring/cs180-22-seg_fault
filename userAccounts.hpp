@@ -14,11 +14,14 @@ class userAccounts {
         void changePassword();
         void deleteAccount();   
         bool getLogin();
+        string getUsername();
+        bool check_user(string filename);
         
     private:
         Document userDatabase;
         bool loggedIn;
         int storedEncryptionKey;
+        string userName;
 };
 
 #endif //_USERACCOUNTS_HPP_

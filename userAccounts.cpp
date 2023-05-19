@@ -6,6 +6,11 @@ userAccounts::userAccounts()
     loggedIn = false;
 }
 
+string userAccounts::getUsername()
+{
+    return userName;
+}
+
 bool userAccounts::getLogin(int encryptionKey){
     if (loggedIn)
     {
@@ -68,6 +73,7 @@ void userAccounts::login() {
             cout << "\nInvalid encryption key, returning to login menu.\n";
             cin.clear();
             cin.ignore(99999, '\n');
+            userName = username;
             return;
         }
         
@@ -77,12 +83,14 @@ void userAccounts::login() {
             cout << "\"" << username << "\"" << " account was found. Logging in.\n";
             loggedIn = true;
             infile.close();
+            userName = username;
             return;
         }
             if (row[1] == username && row[3] == password)
             {
                 cout << "Welcome back " << username << endl;
                 loggedIn = true;
+                userName = username;
             }
     }
 
@@ -101,7 +109,7 @@ void userAccounts::newAccount(int encryptionKey) {
     Document temp;
     if(!temp.csv_file_exists("Accounts.csv"))
     {
-        temp.create_csv_file("Accounts.csv");
+        temp.create_csv_file("Accounts.csv", "ADMIN");
         vector<string> encrypt;
         encrypt.push_back("key");
         encrypt.push_back(to_string(encryptionKey));
@@ -267,4 +275,26 @@ void userAccounts::deleteAccount() {
         cout << "Error deleting " << username << "'s account.\n";
     }
     return;
+}
+
+bool userAccounts::check_user(string filename)
+{
+    ifstream infile;
+    infile.open(filename);
+    string line;
+    while (getline(infile, line)) {
+        vector<string> row;
+        stringstream ss(line);
+        string field;
+        while (getline(ss, field, ',')) {
+            row.push_back(field);
+        }
+            if (row[0] == "user" && row[1] == userName)
+            {
+                infile.close();
+                return true;
+            }
+    }
+    infile.close();
+    return false;
 }
