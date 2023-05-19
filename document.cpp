@@ -42,14 +42,17 @@ bool Document::csv_file_exists(string filename) {
     return infile.good();
 }
 
-void Document::create_csv_file(string filename) {
+void Document::create_csv_file(string filename, string user) {
     // filename += ".csv";
     if(csv_file_exists(filename)){
         cout << "Error: " << filename << " already exists.\n";
         return;
     }
+
     ofstream outfile;
-    outfile.open(filename);
+    outfile.open(filename, ios::app);
+    outfile << "user," << user;
+    outfile << endl;
     outfile.close();
 }
 
@@ -127,6 +130,7 @@ void Document::view_csv(string filename) {
         cout << "Access denied.\n";
         return;
     }
+
     int count = 0;
     ifstream infile;
     infile.open(filename);

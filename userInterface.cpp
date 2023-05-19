@@ -2,6 +2,7 @@
 #include "userInterface.hpp"
 #include "userAccounts.hpp"
 
+
 userInterface::userInterface()
 {
     encryptionKey = 1 + (rand() % 100); // generate random encryption/decryption key from 1-100
@@ -105,9 +106,14 @@ void userInterface::documentMenu(){
 
             if (userSelect == '1') {
                 fileName = getCSVFileName();
-                temp.create_csv_file(fileName);
+                temp.create_csv_file(fileName,currentUser.getUsername());
             } else if (userSelect == '2') {
                 fileName = getCSVFileName();
+                if(!currentUser.check_user(fileName)){
+                    cout << "Error: You do not have access to this file!\n";
+                    continue;
+                }
+
                 string searchQuery = "";
                 cout << "Input value to search in " << fileName << ": ";
                 cin.ignore();
@@ -120,15 +126,31 @@ void userInterface::documentMenu(){
                 }
             } else if (userSelect == '3') {
                 fileName = getCSVFileName();
+                if(!currentUser.check_user(fileName)){
+                    cout << "Error: You do not have access to this file!\n";
+                    continue;
+                }
                 temp.write_csv_output(fileName);
             } else if (userSelect == '4') {
                 fileName = getCSVFileName();
+                if(!currentUser.check_user(fileName)){
+                    cout << "Error: You do not have access to this file!\n";
+                    continue;
+                }
                 temp.view_csv(fileName);
             } else if (userSelect == '5') {
                 fileName = getCSVFileName();
+                if(!currentUser.check_user(fileName)){
+                    cout << "Error: You do not have access to this file!\n";
+                    continue;
+                }
                 temp.delete_csv(fileName);
             } else if (userSelect == '6') {
                 fileName = getCSVFileName();
+                if(!currentUser.check_user(fileName)){
+                    cout << "Error: You do not have access to this file!\n";
+                    continue;
+                }
                 temp.update_csv(fileName);
                 // TODO: insert updating CSV file function call here
             } else if (userSelect == '7') {
