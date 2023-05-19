@@ -13,7 +13,6 @@ class userAccounts {
         void newAccount(int);
         void changePassword();
         void deleteAccount();   
-        bool getLogin();
         string getUsername();
         bool check_user(string filename);
         
