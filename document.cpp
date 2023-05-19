@@ -215,7 +215,7 @@ void Document::update_csv(string filename){
                 if (flag) {
                     data.push_back(row);
                 }
-//                row.clear();
+                row.clear();
             }
         }
         else {
@@ -223,13 +223,13 @@ void Document::update_csv(string filename){
         }
     }
 
-    if (num == 0) {
+    if (num == 0 && flag) {
         data.push_back(temp);
     }
 
     infile.close();
 
-    if ((num < 1 || num >= data.size()) && (!flag && num != 0)) {
+    if ((num < 0 || num >= data.size())) {
         cout << "Error, invalid line selected.\n";
         return;
     }
