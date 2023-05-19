@@ -106,7 +106,7 @@ void Document::view_csv(string filename) {
         cout << "Access denied.\n";
         return;
     }
-    
+    int count = 0;
     ifstream infile;
     infile.open(filename);
     string line;
@@ -117,12 +117,105 @@ void Document::view_csv(string filename) {
         while (getline(ss, field, ',')) {
             row.push_back(field);
         }
+        if (count != 0) {
+            cout << count << ": ";
+        }
         for (int i = 0; i < row.size(); i++) {
             cout << row[i] << "\t";
         }
         cout << endl;
+        count++;
     }
     infile.close();
+}
+
+void Document::update_csv(string filename){
+    int num = 0;
+    int count = -1;
+    bool flag = 0;
+    string insert = "";
+    string input;
+    if(!csv_file_exists(filename)){
+        cout << "ERROR: File does not exist" << endl;
+        return;
+    }
+
+    if (filename == "Accounts.csv")
+    {
+        cout << "Access denied.\n";
+        return;
+    }
+
+    view_csv(filename);
+    cout << "Which line would you like to edit? ";
+    cin >> num;
+    cout << "Would you like to insert or replace? 0 to replace, 1 to insert: ";
+    do {
+        cin >> insert;
+        if (!(insert == "0" || insert == "1")) {
+            cout << "Error, invalid input. Please enter 0 to replace or 1 to insert: ";
+        }
+    } while (!(insert == "0" || insert == "1"));
+    if (insert == "0") {
+        flag = 0;
+    }
+    else {
+        flag = 1;
+    }
+
+    cin.clear();
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+    cout << "Enter data for a new row (Just press enter in replace mode to delete the line): ";
+    getline(cin, input);
+    vector<string> temp;
+    stringstream ss(input);
+    string field;
+    while (getline(ss, field, ',')) {
+        temp.push_back(field);
+    }
+
+    vector<vector<string> > data;
+    string line;
+    ifstream infile;
+    infile.open(filename);
+    
+    while (getline(infile, line)) {
+        vector<string> row;
+        stringstream ss(line);
+        string field;
+        count++;
+        while (getline(ss, field, ',')) {
+            row.push_back(field);
+        }
+        if (count == num) {
+            if (temp.size()) {
+                data.push_back(temp);
+                if (flag) {
+                    data.push_back(row);
+                }
+                row.clear();
+            }
+        }
+        else {
+            data.push_back(row);
+        }
+    }
+
+    infile.close();
+
+    if (num < 1 || num >= data.size()) {
+        cout << "Error, invalid line selected.\n";
+        return;
+    }
+
+    std::ofstream ofs;
+    ofs.open(filename, ofstream::out | ofstream::trunc);
+    ofs.close();
+
+    write_to_csv(filename, data);
+    cout << "Data written to " << filename << endl;
+    return;
 }
 
 bool Document::delete_csv(string filename) {
