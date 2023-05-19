@@ -320,7 +320,7 @@ pair<string, string> Document::search_csv(string filename, string search) {
     if (filename == "Accounts.csv")
     {
         cout << "Access denied.\n";
-        return;
+        return make_pair(to_string(-1), to_string(-1));
     }
     int y_key = 0;
     ifstream infile;
