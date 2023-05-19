@@ -68,11 +68,20 @@ void Document::write_to_csv(string filename, vector<vector<string> > data) {
     outfile.close();
 }
 
+// referenced https://www.techiedelight.com/replace-consecutive-whitespace-with-a-single-space-in-cpp/
+bool spaceComparator(char const &lhs, char const &rhs) 
+{
+    return lhs == rhs && iswspace(lhs);
+}
+
 void Document::write_csv_output(string filename) {
     if(!csv_file_exists(filename)){
         cout << "ERROR: File does not exist" << endl;
         return;
     }
+
+    cin.clear();
+    cin.ignore(99999, '\n');
 
     vector<vector<string> > data;
 
@@ -81,8 +90,20 @@ void Document::write_csv_output(string filename) {
         vector<string> row;
         cout << "Enter data for a new row (or type 'done' to finish): ";
         getline(cin, input);
-        if (input == "done")
+        string lowercaseInput = input;
+        transform(lowercaseInput.begin(), lowercaseInput.end(), lowercaseInput.begin(), ::tolower); // referenced https://stackoverflow.com/a/313990
+        if (input == "done" || lowercaseInput == "done")
+        {
             break;
+        }
+        replace(input.begin(), input.end(), ',', ' ');
+        auto iterator = unique(input.begin(), input.end(), spaceComparator); // referenced https://www.techiedelight.com/replace-consecutive-whitespace-with-a-single-space-in-cpp/
+        input.erase(iterator, input.end());
+        replace(input.begin(), input.end(), ' ', ',');
+        if (input[0] == ',')
+        {
+            input.erase(0, 1);
+        }
         stringstream ss(input);
         string field;
         while (getline(ss, field, ',')) {
@@ -364,6 +385,43 @@ pair<string, string> Document::search_csv(string filename, string search) {
     return make_pair(to_string(-1), to_string(-1));
 }
 
+void Document::encrypt(int encryptionKey)
+{
+    fstream fin, fout;
+    char c;
+	fin.open("Accounts.csv", fstream::in);
+	fout.open("Accounts-encrypted.csv", fstream::out);
+
+	while (fin >> noskipws >> c)
+	{
+		int temp = (c + encryptionKey);
+
+		fout << (char)temp;
+	}
+	fin.close();
+	fout.close();
+}
+
+void Document::decrypt(int encryptionKey)
+{
+    fstream fin, fout;
+    char c;
+    if(!csv_file_exists("Accounts-encrypted.csv"))
+    {
+        encrypt(encryptionKey);
+    }
+	fin.open("Accounts-encrypted.csv", fstream::in);
+	fout.open("Accounts-decrypted.csv", fstream::out);
+
+	while (fin >> noskipws >> c)
+	{
+		int temp = (c - encryptionKey);
+
+		fout << (char)temp;
+	}
+	fin.close();
+	fout.close();
+}
 void Document::deleteRowInCSV(const string& filename, int rowNumber) {
     ifstream file(filename);
     if(!csv_file_exists(filename)){

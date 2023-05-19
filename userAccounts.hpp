@@ -7,6 +7,10 @@ class userAccounts {
 
     public:
         userAccounts();
+        bool getLogin(int);
+        void logout();
+        void login();
+        void newAccount(int);
         void login();
         void newAccount();
         void changePassword();
@@ -16,5 +20,7 @@ class userAccounts {
     private:
         Document userDatabase;
         bool loggedIn;
+        int storedEncryptionKey;
 };
+
 #endif //_USERACCOUNTS_HPP_

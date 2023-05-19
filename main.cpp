@@ -5,6 +5,7 @@
 
 int main()
 {
+	srand(time(0));
 	userInterface UI;
 	UI.loginMenu();
 	return 0;

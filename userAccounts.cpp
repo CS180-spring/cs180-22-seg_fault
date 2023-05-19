@@ -5,31 +5,82 @@ userAccounts::userAccounts()
 {
     loggedIn = false;
 }
+
+bool userAccounts::getLogin(int encryptionKey){
+    if (loggedIn)
+    {
+        storedEncryptionKey = encryptionKey;
+        userDatabase.decrypt(encryptionKey);
+    }
+}
+
 bool userAccounts::getLogin(){
     return loggedIn;
 }
 
+void userAccounts::logout()
+{
+    loggedIn = false;
+    userDatabase.encrypt(storedEncryptionKey);
+    userDatabase.delete_csv("Accounts-decrypted.csv");
+}
+
 void userAccounts::login() {
     Document temp;
-    if(!temp.csv_file_exists("Accounts.csv")){
-        cout << "Error no accounts exist.\n";
+    if(!temp.csv_file_exists("Accounts.csv"))
+    {
+        cout << "\nError no accounts exist.\n";
         return;
     }
+    cin.clear();
+    cin.ignore(99999, '\n');
     string username, password;
+    int inputEncryptionKey;
     cout << "Username: ";
     cin >> username;
     cout << "Password: ";
     cin >> password;
+    cout << "Encryption Key: ";
+    cin >> inputEncryptionKey;
+    if (cin.fail()) // if it's not an int, then invalid key
+    { 
+        cout << "\nInvalid encryption key, returning to login menu.\n";
+        cin.clear();
+        cin.ignore(99999, '\n');
+        return;
+    }
 
     ifstream infile;
     infile.open("Accounts.csv");
     string line;
-    while (getline(infile, line)) {
+    while (getline(infile, line)) 
+    {
         vector<string> row;
         stringstream ss(line);
         string field;
-        while (getline(ss, field, ',')) {
+        
+        while (getline(ss, field, ',')) 
+        {
             row.push_back(field);
+        }
+
+        if (row[0] == "key" && stoi(row[1]) != inputEncryptionKey)
+        {
+            row.clear();
+            infile.close();
+            cout << "\nInvalid encryption key, returning to login menu.\n";
+            cin.clear();
+            cin.ignore(99999, '\n');
+            return;
+        }
+        
+        if (row[1] == username && row[3] == password)
+        {
+            cout << "\nValid encryption key. Continuing search for \"" << username << "\"" << " account.\n";
+            cout << "\"" << username << "\"" << " account was found. Logging in.\n";
+            loggedIn = true;
+            infile.close();
+            return;
         }
             if (row[1] == username && row[3] == password)
             {
@@ -40,6 +91,7 @@ void userAccounts::login() {
 
     if(!loggedIn)
     {
+        cout << username << " account was NOT found.\n";
         // cout << username << " and " << password << " account was NOT found\n";
         cout << "Username or password incorrect\n";
     }
@@ -48,10 +100,26 @@ void userAccounts::login() {
 } 
 
 //TODO mutliple accounts bug fix
-void userAccounts::newAccount() {
+void userAccounts::newAccount(int encryptionKey) {
     Document temp;
     if(!temp.csv_file_exists("Accounts.csv"))
+    {
         temp.create_csv_file("Accounts.csv");
+        vector<string> encrypt;
+        encrypt.push_back("key");
+        encrypt.push_back(to_string(encryptionKey));
+        ofstream outfile;
+        outfile.open("Accounts.csv", ios::app);
+        for (int i = 0; i < encrypt.size(); i++) {
+                outfile << encrypt[i];
+                if (i != encrypt[i].size() - 1) {
+                    outfile << ",";
+                }
+            }
+            outfile << endl;
+        outfile.close();
+    }
+    string username, password;
     string username, password, userInput;
     cout << "New Username: ";
     cin >> username;
@@ -78,7 +146,7 @@ void userAccounts::newAccount() {
         outfile << endl;
     outfile.close();
 
-    cout << "New account created.\n";
+    cout << "\n" << username << " account was created.\n";
 }
 
  void userAccounts::changePassword() {

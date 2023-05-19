@@ -2,6 +2,11 @@
 #include "userInterface.hpp"
 #include "userAccounts.hpp"
 
+userInterface::userInterface()
+{
+    encryptionKey = 1 + (rand() % 100); // generate random encryption/decryption key from 1-100
+}
+
 // Login Menu
 void userInterface::loginMenu() {   
     cout << "WELCOME TO DOCUMENT DATA STORE" << endl;
@@ -19,10 +24,10 @@ void userInterface::loginMenu() {
         
         if (userSelect == '1') {
             currentUser.login();
-            if(currentUser.getLogin())
+            if(currentUser.getLogin(encryptionKey))
                 documentMenu();
         } else if (userSelect == '2') {
-             currentUser.newAccount();
+             currentUser.newAccount(encryptionKey);
         } else if (userSelect == '3') {
             currentUser.changePassword();
         } else if (userSelect == '4') {
@@ -107,7 +112,12 @@ void userInterface::documentMenu(){
                 cout << "Input value to search in " << fileName << ": ";
                 cin.ignore();
                 getline(cin, searchQuery);
-                temp.search_csv(fileName, searchQuery);
+                pair<string, string> foundSearchQueryCoordinates;
+                foundSearchQueryCoordinates = temp.search_csv(fileName, searchQuery);
+                if (foundSearchQueryCoordinates.first != "-1" && foundSearchQueryCoordinates.second != "-1")
+                {
+                    cout << "\n" << searchQuery << " was found at " << "[" << foundSearchQueryCoordinates.first << ", " << foundSearchQueryCoordinates.second << "] in " + fileName << ".\n";
+                }
             } else if (userSelect == '3') {
                 fileName = getCSVFileName();
                 temp.write_csv_output(fileName);
@@ -123,6 +133,7 @@ void userInterface::documentMenu(){
                 // TODO: insert updating CSV file function call here
             } else if (userSelect == '7') {
                 option = 'q';
+                currentUser.logout();
             } else {
                 cout << "Error: invalid selection." << endl;
             }
