@@ -212,6 +212,7 @@ void userAccounts::newAccount(int encryptionKey) {
     cout << "Password changed.\n";
 }
 
+// takes in username and deletes the account 
 void userAccounts::deleteAccount() {
     Document temp;
     if(!temp.csv_file_exists("Accounts.csv")){
