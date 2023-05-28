@@ -269,6 +269,7 @@ bool Document::delete_csv(string filename) {
     }
 }
 
+// filters the vector of documents by tag
 vector<Document*> filter(vector<Document*> docs, string tag)
 {
     vector<Document*> filteredDocs;
@@ -286,7 +287,6 @@ vector<Document*> filter(vector<Document*> docs, string tag)
         }
     }
     return filteredDocs;
-  
 }
 
  vector <Document*> Ascending(vector<Document*> input) {
