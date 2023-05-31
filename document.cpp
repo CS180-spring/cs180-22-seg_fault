@@ -84,7 +84,7 @@ void Document::write_csv_output(string filename) {
     }
 
     cin.clear();
-    cin.ignore(99999, '\n');
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
     vector<vector<string> > data;
 
