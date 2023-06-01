@@ -15,6 +15,7 @@ using namespace std;
 
 class Document {
     public:
+        //THESE FUNCTIONS ARE ALL DEPRECATED FROM PREVIOUS VERSIONS OF OUR PROGRAMS
         vector<string> tags;
   
         void SetName(string);
@@ -29,8 +30,10 @@ class Document {
         void AddTag(string);
         void DelTag(string);
 
+        
+    
         pair<string, string> search_csv(string, string);
-  
+    
         int GetLastOpened();
   
         bool csv_file_exists(string);
