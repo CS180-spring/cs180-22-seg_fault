@@ -30,7 +30,7 @@ class Document {
         void AddTag(string);
         void DelTag(string);
 
-        
+        //THESE FUNCTIONS ARE USED IN OUR CURRENT SYSTEM
     
         pair<string, string> search_csv(string, string);
     
