@@ -3,6 +3,8 @@
 #include "userInterface.cpp"
 #include "userAccounts.cpp"
 
+//OUR MAIN PROGRAM LOOP
+
 int main()
 {
 	srand(time(0));
