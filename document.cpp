@@ -1,5 +1,7 @@
 #include "document.hpp"
 
+//DEPRECATED SETTERS AND GETTERS
+
 void Document::SetName(string temp) {
     name = temp;
 }
@@ -36,6 +38,8 @@ void Document::DelTag(string tag) {
         }
     }
 }
+
+//CHANGED TON CSV FILE FORMAT, THESE FUNCTIONS ARE USEDA
 
 bool Document::csv_file_exists(string filename) {
     ifstream infile(filename);
