@@ -8,17 +8,17 @@
 
 using namespace std;
 
-class userInterface {
-
+class userInterface 
+{
     public:
+        userInterface();
         void loginMenu();
         // void accountManagement();
         void documentMenu();
     private:
         userAccounts currentUser;
+        int encryptionKey;
         logging userLogs{"userLogs.txt"};
-        // bool loggedIn;
-        //database currentDatabase;
-        
 };
+
 #endif //_USERINTERFACE_HPP

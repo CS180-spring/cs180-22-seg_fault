@@ -7,15 +7,22 @@
 class userAccounts {
 
     public:
+        userAccounts();
+        bool getLogin(int);
+        void logout();
         void login();
-        void newAccount();
-        // void changePassword();
-        // void deleteAccount();
-        bool getLogin();
+        void newAccount(int);
+        void changePassword();
+        void deleteAccount();   
+        string getUsername();
+        bool check_user(string filename);
         
     private:
         Document userDatabase;
         bool loggedIn;
+        int storedEncryptionKey;
+        string userName;
         logging accountLogs{"accountLogs.txt"};
 };
+
 #endif //_USERACCOUNTS_HPP_

@@ -3,6 +3,9 @@
 
 #include "document.hpp"
 
+//THIS CODE IS ALL DEPRACATED, NOT BEING USED WITH THE CURRENT SYSTEM
+//ONLY STILL HERE FOR BACKWARDS COMPATIBILITY
+
 class Collection {
     public:
         void SetName(string);

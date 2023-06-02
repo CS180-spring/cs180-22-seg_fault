@@ -1,5 +1,7 @@
 #include "collection.hpp"
 
+//THIS CODE IS ALL DEPRECATED, NOT CURRENTLY USED IN OUR SYSTEM
+
 void Collection::SetName(string temp) {
     name = temp;
 }
