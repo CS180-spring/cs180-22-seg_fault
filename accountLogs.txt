@@ -1,0 +1,3 @@
+Document Data Store Logs: 
+User not found: 123
+New account created: 123

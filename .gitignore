@@ -1,0 +1,12 @@
+*.exe
+.vscode/tasks.json
+.vscode/c_cpp_properties.json
+.vscode/launch.json
+.vscode/settings.json
+a.out
+.DS_store
+*.csv
+*.o
+main.dSYM/Contents/Resources/DWARF/main
+main.dSYM/Contents/Info.plist
+main
