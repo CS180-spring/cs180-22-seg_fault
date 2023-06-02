@@ -1,5 +1,6 @@
 #include "userAccounts.hpp"
 #include "document.hpp"
+#include "logging.hpp"
 
 bool userAccounts::getLogin(){
     return loggedIn;
@@ -31,12 +32,14 @@ void userAccounts::login() {
             {
                 cout << username << " and " << password << " account found\n";
                 loggedIn = true;
+                accountLogs.newLog("Logged in: " + username);
             }
     }
 
     if(!loggedIn)
     {
         cout << username << " and " << password << " account was NOT found\n";
+        accountLogs.newLog("User not found: " + username);
     }
     infile.close();
 
@@ -69,6 +72,7 @@ void userAccounts::newAccount() {
     outfile.close();
 
     cout << "New account created.\n";
+    accountLogs.newLog("New account created: " + username);
 }
 
 // void userAccounts::changePassword() {

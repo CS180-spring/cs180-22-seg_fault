@@ -1,6 +1,7 @@
 // Terminal user interface
 #include "userInterface.hpp"
 #include "userAccounts.hpp"
+#include "logging.hpp"
 
 // Login Menu
 void userInterface::loginMenu() {   
@@ -94,18 +95,22 @@ void userInterface::documentMenu(){
             if (userSelect == '1') {
                 fileName = getCSVFileName();
                 temp.create_csv_file(fileName);
+                userLogs.newLog("New CSV file created: " + fileName);
             } else if (userSelect == '2') {
                 fileName = getCSVFileName();
                 // TODO: insert search CSV file function call here
             } else if (userSelect == '3') {
                 fileName = getCSVFileName();
                 temp.write_csv_output(fileName);
+                userLogs.newLog("CSV file updated: " + fileName);
             } else if (userSelect == '4') {
                 fileName = getCSVFileName();
                 temp.view_csv(fileName);
+                userLogs.newLog("CSV file viewed: " + fileName);
             } else if (userSelect == '5') {
                 fileName = getCSVFileName();
                 temp.delete_csv(fileName);
+                userLogs.newLog("CSV file deleted: " + fileName);
             } else if (userSelect == '6') {
                 option = 'q';
             } else {

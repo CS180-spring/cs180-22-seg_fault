@@ -2,11 +2,15 @@
 #include "document.hpp"
 #include "userInterface.hpp"
 #include "userAccounts.hpp"
+#include "logging.hpp"
 
 int main()
 {
 	userInterface UI;
 	UI.loginMenu();
+	//logging datastoreLogs("temp.txt");
+	//datastoreLogs.newLog("hello");
+
 	return 0;
 }
 

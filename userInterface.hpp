@@ -3,6 +3,8 @@
 
 #include "document.hpp"
 #include "userAccounts.hpp"
+#include "logging.hpp"
+#include <string>
 
 using namespace std;
 
@@ -14,6 +16,7 @@ class userInterface {
         void documentMenu();
     private:
         userAccounts currentUser;
+        logging userLogs{"userLogs.txt"};
         // bool loggedIn;
         //database currentDatabase;
         
