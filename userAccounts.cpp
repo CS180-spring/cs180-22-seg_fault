@@ -85,6 +85,7 @@ void userAccounts::login() {
             loggedIn = true;
             infile.close();
             userName = username;
+            accountLogs.newLog("User login: " + username);
             return;
         }
             if (row[1] == username && row[3] == password)

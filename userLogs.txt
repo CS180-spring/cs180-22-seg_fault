@@ -1,1 +1,4 @@
-New CSV file created: we.csv
+Document Data Store Logs: 
+v
+New CSV file created: new.csv
+CSV file deleted: new.csv
