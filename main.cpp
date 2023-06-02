@@ -1,8 +1,8 @@
-#include "collection.hpp"
-#include "document.hpp"
-#include "userInterface.hpp"
-#include "userAccounts.hpp"
-#include "logging.hpp"
+#include "collection.cpp"
+#include "document.cpp"
+#include "userInterface.cpp"
+#include "userAccounts.cpp"
+#include "logging.cpp"
 
 int main()
 {
