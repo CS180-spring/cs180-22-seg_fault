@@ -1,9 +1,9 @@
 # Makefile
 
 # Dependencies
-OBJS	= main.o document.o userAccounts.o userInterface.o collection.o
-SOURCE	= main.cpp document.cpp userAccounts.cpp userInterface.cpp collection.cpp
-HEADER	= document.hpp userAccounts.hpp userInterface.hpp collection.hpp
+OBJS	= main.o document.o userAccounts.o userInterface.o collection.o logging.o
+SOURCE	= main.cpp document.cpp userAccounts.cpp userInterface.cpp collection.cpp logging.cpp
+HEADER	= document.hpp userAccounts.hpp userInterface.hpp collection.hpp logging.hpp
 
 # Target executable
 OUT	= datastore

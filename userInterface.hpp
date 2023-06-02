@@ -3,6 +3,8 @@
 
 #include "document.hpp"
 #include "userAccounts.hpp"
+#include "logging.hpp"
+#include <string>
 
 using namespace std;
 
@@ -16,6 +18,7 @@ class userInterface
     private:
         userAccounts currentUser;
         int encryptionKey;
+        logging userLogs{"userLogs.txt"};
 };
 
 #endif //_USERINTERFACE_HPP

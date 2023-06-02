@@ -2,6 +2,7 @@
 #define _USERACCOUNTS_HPP_
 
 #include "document.hpp"
+#include "logging.hpp"
 
 class userAccounts {
 
@@ -21,6 +22,7 @@ class userAccounts {
         bool loggedIn;
         int storedEncryptionKey;
         string userName;
+        logging accountLogs{"accountLogs.txt"};
 };
 
 #endif //_USERACCOUNTS_HPP_

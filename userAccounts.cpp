@@ -1,5 +1,6 @@
 #include "userAccounts.hpp"
 #include "document.hpp"
+#include "logging.hpp"
 
 userAccounts::userAccounts()
 {
@@ -90,6 +91,7 @@ void userAccounts::login() {
             {
                 cout << "Welcome back " << username << endl;
                 loggedIn = true;
+                accountLogs.newLog("Logged in: " + username);
                 userName = username;
             }
     }
@@ -98,6 +100,7 @@ void userAccounts::login() {
     {
         cout << username << " account was NOT found.\n";
         cout << "Username or password incorrect\n";
+        accountLogs.newLog("User not found: " + username);
     }
     infile.close();
 
@@ -149,6 +152,7 @@ void userAccounts::newAccount(int encryptionKey) {
     outfile.close();
 
     cout << "\n" << username << " account was created.\n";
+    accountLogs.newLog("New account created: " + username);
 }
 
  void userAccounts::changePassword() {

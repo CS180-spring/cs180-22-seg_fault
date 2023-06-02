@@ -1,6 +1,7 @@
 // Terminal user interface
 #include "userInterface.hpp"
 #include "userAccounts.hpp"
+#include "logging.hpp"
 
 //THIS CLASS IS ONLY RESPONSIBLE FOR USER INTERFACE. IT WITH THE USERACCOUNT AND DOCUMENT CLASSES
 //IT IS ONLY RESPONSIBLE FOR PRINTING MESSAGES AND CALLING OTHER FUNCTIONS
@@ -75,6 +76,7 @@ void userInterface::documentMenu(){
             if (userSelect == '1') {
                 fileName = getCSVFileName();
                 temp.create_csv_file(fileName,currentUser.getUsername());
+                userLogs.newLog("New CSV file created: " + fileName);
             } else if (userSelect == '2') {
                 fileName = getCSVFileName();
                 if(!currentUser.check_user(fileName)){
@@ -99,6 +101,7 @@ void userInterface::documentMenu(){
                     continue;
                 }
                 temp.write_csv_output(fileName);
+                userLogs.newLog("CSV file updated: " + fileName);
             } else if (userSelect == '4') {
                 fileName = getCSVFileName();
                 if(!currentUser.check_user(fileName)){
@@ -106,6 +109,7 @@ void userInterface::documentMenu(){
                     continue;
                 }
                 temp.view_csv(fileName);
+                userLogs.newLog("CSV file viewed: " + fileName);
             } else if (userSelect == '5') {
                 fileName = getCSVFileName();
                 if(!currentUser.check_user(fileName)){
@@ -113,6 +117,7 @@ void userInterface::documentMenu(){
                     continue;
                 }
                 temp.delete_csv(fileName);
+                userLogs.newLog("CSV file deleted: " + fileName);
             } else if (userSelect == '6') {
                 fileName = getCSVFileName();
                 if(!currentUser.check_user(fileName)){
